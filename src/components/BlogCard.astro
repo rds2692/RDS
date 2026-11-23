@@ -1,0 +1,22 @@
+---
+interface Props {
+  slug: string;
+  title: string;
+  description: string;
+  category: string;
+  publishDate: Date;
+  readingTime?: number;
+  tone?: string;
+}
+const { slug, title, description, category, publishDate, readingTime = 5, tone = 'mint' } = Astro.props;
+const dateText = new Intl.DateTimeFormat('es-CL', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' }).format(publishDate);
+---
+<article class={`blog-card blog-${tone}`}>
+  <a href={`/blog/${slug}/`} class="blog-card-link">
+    <span class="blog-card-art" aria-hidden="true"><span class="art-sun"></span><span class="art-scribble">RDS / IDEAS</span><span class="art-star">✳</span></span>
+    <span class="blog-card-meta"><span>{category}</span><span>{readingTime} min · {dateText}</span></span>
+    <span class="blog-card-title">{title}</span>
+    <span class="blog-card-description">{description}</span>
+    <span class="blog-card-more">Leer artículo <span aria-hidden="true">↗</span></span>
+  </a>
+</article>

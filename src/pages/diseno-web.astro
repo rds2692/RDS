@@ -1,0 +1,45 @@
+---
+import { getCollection } from 'astro:content';
+import ServicePage from '../components/ServicePage.astro';
+import { WEB_PLANS } from '../data/pricing';
+const allPosts = await getCollection('blog', ({ data }) => !data.draft);
+const posts = allPosts.filter(({ data }) => data.category === 'Diseño web').slice(0, 2);
+---
+<ServicePage
+  title="Diseño y desarrollo web"
+  metaTitle="Diseño web para negocios | Rangel Designs Studio"
+  description="Diseño y desarrollo web con estrategia, estructura clara y una experiencia móvil cuidada. Cuéntame qué necesita tu sitio."
+  intro="Diseñamos y desarrollamos sitios que cuentan bien lo que haces y hacen fácil encontrar el siguiente paso. Una presencia digital con personalidad, pensada desde la estructura hasta el último detalle."
+  serviceType="Diseño y desarrollo de sitios web"
+  tag="ESTRATEGIA + DISEÑO + CÓDIGO"
+  tone="violet"
+  outcomes={[
+    { title: 'Una propuesta fácil de entender', text: 'Organizamos tus mensajes para que el visitante comprenda qué ofreces y para quién.' },
+    { title: 'Una experiencia cuidada', text: 'Diseñamos para móvil y escritorio con navegación sencilla y jerarquía visual clara.' },
+    { title: 'Una base lista para crecer', text: 'La arquitectura puede sumar páginas, contenido y funcionalidades a medida que el negocio lo necesite.' },
+  ]}
+  deliverables={[
+    'Mapa del sitio y estructura de páginas',
+    'Dirección visual adaptada a la identidad de tu marca',
+    'Diseño responsive para móvil, tablet y escritorio',
+    'Desarrollo y carga del contenido acordado',
+    'Metadatos SEO básicos y enlaces internos',
+    'Revisión previa a publicación y entrega del proyecto',
+  ]}
+  process={[
+    { title: 'Descubrimiento', text: 'Alineamos audiencia, objetivos, contenido disponible y funcionalidades.' },
+    { title: 'Arquitectura y diseño', text: 'Aprobamos la estructura y la dirección visual antes de construir.' },
+    { title: 'Desarrollo', text: 'Implementamos las páginas y componentes definidos en el alcance.' },
+    { title: 'Revisión y publicación', text: 'Revisamos enlaces, contenido y visualización; coordinamos el lanzamiento.' },
+  ]}
+  faqs={[
+    { question: '¿Cuánto tarda en diseñarse y desarrollarse una web?', answer: 'El plazo depende de la cantidad de páginas, funcionalidades, contenido y revisiones. Se acuerda en la propuesta antes de empezar.' },
+    { question: '¿Puedo actualizar el sitio después?', answer: 'Sí. La forma de editarlo depende de la plataforma y del alcance. Definimos cómo se gestionará el contenido al inicio del proyecto.' },
+    { question: '¿El SEO está incluido en el diseño web?', answer: 'La estructura técnica y los metadatos básicos se pueden incluir en el desarrollo. Una estrategia de SEO continua es un servicio aparte y se detalla en su propia propuesta.' },
+  ]}
+  posts={posts}
+  plans={WEB_PLANS}
+  pricingHeading="Paquetes de diseño y desarrollo web"
+  pricingIntro="Los tres paquetes son proyectos de pago único. La base SEO incluida no sustituye al posicionamiento mensual."
+  note={{ title: 'Qué se cotiza aparte', text: 'Posicionamiento mensual, redacción extensa, páginas locales, campañas, hosting, dominio, licencias e integraciones especiales se presupuestan aparte. Los precios son base; el alcance se confirma por escrito.', href: '/precios/', cta: 'Ver condiciones comerciales' }}
+/>

@@ -1,0 +1,47 @@
+---
+import { getCollection } from 'astro:content';
+import ServicePage from '../components/ServicePage.astro';
+import { MONTHLY_PLANS } from '../data/pricing';
+const allPosts = await getCollection('blog', ({ data }) => !data.draft);
+const posts = allPosts.filter(({ data }) => data.category === 'SEO').slice(0, 2);
+---
+<ServicePage
+  title="Posicionamiento SEO mensual"
+  metaTitle="Planes de posicionamiento SEO mensual | RDS"
+  description="Planes mensuales de posicionamiento SEO local y orgánico, con alcance claro, límites de trabajo y seguimiento de métricas disponibles."
+  intro="El posicionamiento SEO es trabajo continuo sobre las páginas, los contenidos y los aspectos técnicos que conectan tu negocio con las búsquedas de tus clientes. Elegimos prioridades, ejecutamos el alcance acordado y revisamos las señales disponibles."
+  serviceType="Posicionamiento SEO mensual y local"
+  tag="SEARCH + AI GROWTH"
+  tone="orange"
+  outcomes={[
+    { title: 'Una ruta con prioridades', text: 'El plan define qué páginas y mejoras trabajar primero, según el estado del sitio y los objetivos del negocio.' },
+    { title: 'Trabajo dentro de límites claros', text: 'Cada plan especifica cuántas palabras clave, páginas y contenidos contempla por mes.' },
+    { title: 'Seguimiento sin promesas de ranking', text: 'Se observan impresiones, clics, indexación y otras métricas disponibles. Ningún plan garantiza una posición concreta.' },
+  ]}
+  deliverables={[
+    'Seguimiento de palabras clave dentro del límite del plan',
+    'SEO técnico y on-page según el plan seleccionado',
+    'Optimización de páginas existentes según la cuota mensual',
+    'SEO local para ubicación o zonas acordadas',
+    'Google Business Profile solo cuando corresponda y exista un perfil',
+    'Enlaces internos y datos estructurados cuando correspondan',
+    'Contenido estratégico según el plan',
+    'Informe mensual con el detalle del trabajo y recomendaciones',
+  ]}
+  plans={MONTHLY_PLANS}
+  pricingHeading="Planes mensuales de posicionamiento"
+  pricingIntro="Los importes son mensuales, en CLP, y se pagan por adelantado. Se recomienda un período inicial de 3 meses para evaluar la evolución."
+  note={{ title: '¿El sitio lo construyó otro equipo?', text: 'Antes de empezar un plan, hacemos una auditoría pagada por separado. Si hacen falta correcciones, las cotizamos y aprobamos antes de tocar la web.', href: '/auditoria-seo/', cta: 'Ver auditoría y proceso' }}
+  process={[
+    { title: 'Acordar prioridades', text: 'Alineamos objetivos, alcance del plan y métricas disponibles.' },
+    { title: 'Ejecutar el trabajo', text: 'Trabajamos dentro de los límites mensuales acordados.' },
+    { title: 'Revisar señales', text: 'Observamos datos de Search Console u otras fuentes disponibles.' },
+    { title: 'Planificar el siguiente ciclo', text: 'Compartimos lo realizado y las recomendaciones para el mes siguiente.' },
+  ]}
+  faqs={[
+    { question: '¿El pago mensual incluye una nueva web o todas las correcciones?', answer: 'No. El desarrollo web, la auditoría, la implementación inicial y los planes mensuales son servicios separados. Cada plan define su propio límite de trabajo.' },
+    { question: '¿Pueden garantizar una posición en Google?', answer: 'No. El trabajo busca mejorar el sitio y medir señales verificables; ningún proveedor puede garantizar una posición concreta.' },
+    { question: '¿Qué necesito para empezar?', answer: 'El dominio y accesos autorizados a Search Console u otras herramientas, si existen. Para una web que RDS no construyó, primero revisamos la plataforma y los riesgos.' },
+  ]}
+  posts={posts}
+/>

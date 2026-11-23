@@ -1,0 +1,38 @@
+---
+import { formatCLP } from '../data/pricing';
+
+interface Plan {
+  id?: string;
+  name: string;
+  amount?: number;
+  minimum?: number;
+  maximum?: number;
+  payment: string;
+  scope?: string;
+  audience?: string;
+  description?: string;
+  includes: string[];
+  excludes?: string[];
+  recommended?: boolean;
+}
+interface Props { plan: Plan; tone?: string; compact?: boolean; }
+const { plan, tone = 'paper', compact = false } = Astro.props;
+const price = typeof plan.amount === 'number'
+  ? formatCLP(plan.amount)
+  : typeof plan.minimum === 'number' && typeof plan.maximum === 'number'
+    ? `${formatCLP(plan.minimum)} – ${formatCLP(plan.maximum)}`
+    : 'Cotización';
+const priceSuffix = plan.payment.startsWith('Mensual') ? '/ mes' : '';
+---
+<article class={`price-detail-card price-tone-${tone} ${plan.recommended ? 'price-featured' : ''} ${compact ? 'price-compact' : ''}`}>
+  {plan.recommended && <span class="price-recommendation">RECOMENDADO</span>}
+  <p class="price-card-kicker">{plan.payment}</p>
+  <h3>{plan.name}</h3>
+  {plan.scope && <p class="price-card-scope">{plan.scope}</p>}
+  <p class="price-card-amount"><strong>{price}</strong><span>CLP {priceSuffix}</span></p>
+  {(plan.audience || plan.description) && <p class="price-card-audience">{plan.audience || plan.description}</p>}
+  <a class="button button-ink price-card-cta" href={`/contacto/?servicio=${encodeURIComponent(plan.name)}`}>Consultar este servicio <span aria-hidden="true">↗</span></a>
+  <h4>Incluye</h4>
+  <ul>{plan.includes.map((item) => <li><span aria-hidden="true">✳</span>{item}</li>)}</ul>
+  {plan.excludes && <details class="price-exclusions"><summary>Qué no incluye</summary><ul>{plan.excludes.map((item) => <li>{item}</li>)}</ul></details>}
+</article>

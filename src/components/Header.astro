@@ -1,0 +1,33 @@
+---
+import { NAV_ITEMS } from '../site';
+const currentPath = Astro.url.pathname;
+---
+<a class="skip-link" href="#contenido">Saltar al contenido</a>
+<header class="site-header">
+  <a class="brand" href="/" aria-label="Rangel Designs Studio, inicio">
+    <span class="brand-mark">RDS<span class="registered">®</span></span>
+    <span class="brand-name">RANGEL DESIGNS<br />STUDIO</span>
+  </a>
+  <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" data-menu-toggle>
+    <span class="menu-toggle-label">Menú</span><span class="menu-icon" aria-hidden="true"><i></i><i></i></span>
+  </button>
+  <nav class="primary-nav" id="primary-nav" aria-label="Navegación principal" data-nav>
+    {NAV_ITEMS.map((item) => <a href={item.href} aria-current={currentPath === item.href || (item.href === '/servicios/' && ['/diseno-web/', '/seo/', '/auditoria-seo/', '/seo-local/', '/seo-ia/'].includes(currentPath)) || (item.href === '/proyectos/' && currentPath.startsWith('/proyectos/')) ? 'page' : undefined}>{item.label}</a>)}
+    <a class="nav-cta" href="/contacto/">Hablemos <span aria-hidden="true">↗</span></a>
+  </nav>
+</header>
+<script>
+  const toggle = document.querySelector<HTMLButtonElement>('[data-menu-toggle]');
+  const nav = document.querySelector<HTMLElement>('[data-nav]');
+  const closeMenu = () => {
+    toggle?.setAttribute('aria-expanded', 'false');
+    nav?.classList.remove('is-open');
+  };
+  toggle?.addEventListener('click', () => {
+    const expanded = toggle.getAttribute('aria-expanded') === 'true';
+    toggle.setAttribute('aria-expanded', String(!expanded));
+    nav?.classList.toggle('is-open', !expanded);
+  });
+  nav?.querySelectorAll('a').forEach((link) => link.addEventListener('click', closeMenu));
+  document.addEventListener('keydown', (event) => { if (event.key === 'Escape') closeMenu(); });
+</script>

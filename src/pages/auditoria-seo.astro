@@ -1,0 +1,36 @@
+---
+import ServicePage from '../components/ServicePage.astro';
+import { AUDIT, IMPLEMENTATION } from '../data/pricing';
+const plans = [AUDIT, IMPLEMENTATION];
+---
+<ServicePage
+  title="Auditoría técnica y SEO de sitios existentes"
+  metaTitle="Auditoría SEO para sitios web existentes | RDS"
+  description="Auditoría técnica y SEO pagada antes de intervenir un sitio existente. Recibe diagnóstico priorizado, riesgos y presupuesto de implementación."
+  intro="Si RDS no construyó tu sitio, primero revisamos cómo está hecho, qué accesos hay, qué funciona y qué riesgos existen. La auditoría es un servicio de diagnóstico; las correcciones se presupuesta y aprueban aparte."
+  serviceType="Auditoría técnica y SEO de sitios web existentes"
+  tag="DIAGNÓSTICO ANTES DE INTERVENIR"
+  tone="violet"
+  outcomes={[
+    { title: 'Entender antes de cambiar', text: 'Revisamos CMS, código, tema, plugins, infraestructura y dependencias conocidas.' },
+    { title: 'Prioridades y riesgos visibles', text: 'El informe distingue problemas, oportunidades, impacto y precauciones antes de intervenir.' },
+    { title: 'Un alcance separado', text: 'La implementación se cotiza después, con respaldo, aprobación y verificación acordados.' },
+  ]}
+  deliverables={AUDIT.includes}
+  plans={plans}
+  pricingHeading="Auditoría e implementación inicial"
+  pricingIntro="La auditoría se paga antes de comenzar. La implementación es un trabajo separado y se define después del diagnóstico."
+  note={{ title: 'Protocolo de protección', text: 'Antes de modificar, revisamos accesos autorizados, hosting, CMS y dependencias; verificamos una copia de seguridad, documentamos el estado inicial y acordamos el alcance. Los cambios se prueban y verifican cuando la plataforma lo permite.', href: '/contacto/', cta: 'Conversar sobre una auditoría' }}
+  process={[
+    { title: 'Accesos y contexto', text: 'Recibimos el dominio y accesos autorizados; identificamos funcionalidades críticas.' },
+    { title: 'Auditoría pagada', text: 'Revisamos las áreas acordadas y documentamos problemas, riesgos y prioridades.' },
+    { title: 'Presentación', text: 'Compartimos el diagnóstico, las recomendaciones y un alcance de implementación.' },
+    { title: 'Aprobación y ejecución', text: 'Respaldamos y ejecutamos solo los cambios aprobados, dentro del presupuesto.' },
+  ]}
+  faqs={[
+    { question: '¿La auditoría corrige los problemas que encuentra?', answer: 'No. La auditoría entrega el diagnóstico y las prioridades. La implementación se presupuesta y aprueba por separado.' },
+    { question: '¿Por qué revisar antes de intervenir?', answer: 'Los sitios pueden depender de un CMS, un tema, plugins, código personalizado e infraestructura que deben conocerse antes de modificar.' },
+    { question: '¿La auditoría incluye una copia de seguridad?', answer: 'Se verifica o coordina un respaldo autorizado antes de cualquier intervención. La auditoría por sí sola no autoriza cambios en el sitio.' },
+  ]}
+  posts={[]}
+/>

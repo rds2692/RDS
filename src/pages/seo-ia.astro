@@ -1,0 +1,41 @@
+---
+import { getCollection } from 'astro:content';
+import ServicePage from '../components/ServicePage.astro';
+const allPosts = await getCollection('blog', ({ data }) => !data.draft);
+const posts = allPosts.filter(({ data }) => data.category === 'SEO + IA').slice(0, 2);
+---
+<ServicePage
+  title="GEO y AEO: claridad para búsquedas con IA"
+  metaTitle="GEO y AEO para buscadores con IA | RDS"
+  description="Estructura y contenido claros para buscadores y experiencias de respuesta con IA. Sin promesas de citas: trabajamos las bases verificables."
+  intro="GEO y AEO describen el trabajo de presentar información de forma clara para motores generativos y de respuesta. En RDS se integran con fundamentos de SEO: páginas accesibles, contenido útil y datos coherentes con lo que el sitio muestra."
+  serviceType="Preparación de contenido para experiencias de búsqueda con inteligencia artificial"
+  tag="GEO + AEO / SEARCH + AI GROWTH"
+  tone="mint"
+  outcomes={[
+    { title: 'Contenido que responde preguntas', text: 'Ordenamos páginas para que la propuesta, las entidades y las respuestas importantes queden claras.' },
+    { title: 'Fuentes y datos verificables', text: 'Revisamos afirmaciones, fuentes externas y coherencia entre el contenido visible y el Schema.' },
+    { title: 'SEO como fundamento', text: 'Priorizamos rastreo, enlaces internos, experiencia y contenido propio antes de añadir tácticas.' },
+  ]}
+  deliverables={[
+    'Revisión de rastreo e indexación de páginas prioritarias',
+    'Análisis de claridad, entidades y estructura del contenido',
+    'Preguntas relevantes, encabezados y enlaces internos',
+    'Revisión de datos estructurados contra el contenido visible',
+    'Plan editorial con fuentes verificables y temas de negocio',
+    'Métricas de búsqueda disponibles para seguir la evolución',
+  ]}
+  note={{ title: 'No existe una etiqueta que garantice citas', text: 'Google indica que no requiere Schema especial ni archivos de IA para aparecer en AI Overviews o AI Mode. No garantizamos citas ni recomendaciones en plataformas de IA.', href: '/seo/', cta: 'Ver planes de posicionamiento' }}
+  process={[
+    { title: 'Revisar', text: 'Analizamos rastreo, páginas, contenido, fuentes y estructura.' },
+    { title: 'Aclarar', text: 'Priorizamos respuestas directas, datos verificables y enlaces útiles.' },
+    { title: 'Implementar', text: 'Acordamos cambios visibles y datos estructurados que correspondan.' },
+    { title: 'Observar', text: 'Revisamos las señales disponibles sin atribuir causalidad a una cita aislada.' },
+  ]}
+  faqs={[
+    { question: '¿Pueden garantizar que ChatGPT o Google citen mi empresa?', answer: 'No. La inclusión depende de cada plataforma. Mejoramos accesibilidad, claridad y calidad de información, pero no prometemos citas ni recomendaciones.' },
+    { question: '¿Necesito un archivo llms.txt?', answer: 'No es un requisito para aparecer en las funciones de IA de Google Search. Primero conviene revisar rastreo, contenido, enlaces y coherencia del sitio.' },
+    { question: '¿GEO y AEO reemplazan al SEO?', answer: 'No en este servicio. La estrategia parte de fundamentos SEO y los aplica a cómo se organizan respuestas, entidades y fuentes.' },
+  ]}
+  posts={posts}
+/>

@@ -1,0 +1,23 @@
+---
+import { getCollection } from 'astro:content';
+import BlogCard from '../../components/BlogCard.astro';
+import Header from '../../components/Header.astro';
+import SiteFooter from '../../components/SiteFooter.astro';
+import MainLayout from '../../layouts/MainLayout.astro';
+const posts = (await getCollection('blog', ({ data }) => !data.draft)).sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf());
+const description = 'Artículos y guías de Rangel Designs Studio sobre diseño web, SEO, desarrollo digital e inteligencia artificial.';
+const categories = [
+  { id: 'diseno-web', label: 'Diseño web' },
+  { id: 'seo', label: 'SEO' },
+  { id: 'seo-ia', label: 'SEO + IA' },
+].map((category) => ({ ...category, posts: posts.filter((post) => post.data.category === category.label) }));
+---
+<MainLayout title="Ideas sobre diseño web, SEO y desarrollo | Blog RDS" description={description} schema={{ '@type': 'Blog', name: 'Ideas de Rangel Designs Studio', description, inLanguage: 'es-CL' }}>
+  <div id="top" class="site-shell"><Header /><main id="contenido">
+    <section class="blog-index-hero section-pad"><nav class="breadcrumbs" aria-label="Migas de pan"><a href="/">Inicio</a><span>/</span><span aria-current="page">Ideas</span></nav><p class="eyebrow"><span class="status-dot"></span> DISEÑO · SEO · DESARROLLO · IA</p><h1>Ideas para hacer<br /><span>mejores webs.</span></h1><p class="directory-intro">Guías prácticas del estudio para resolver preguntas sobre diseño, desarrollo y visibilidad digital. Sin fórmulas mágicas. Con fuentes para seguir leyendo.</p></section>
+    <section class="blog-index section-pad"><div class="blog-index-top"><p>{posts.length} {posts.length === 1 ? 'artículo' : 'artículos'} para explorar</p><div class="category-pills">{categories.filter((category) => category.posts.length).map((category) => <a href={`#categoria-${category.id}`}>{category.label}</a>)}</div></div>
+      {posts.length > 0 ? categories.filter((category) => category.posts.length).map((category) => <section class="blog-category" id={`categoria-${category.id}`}><div class="blog-category-title"><h2>{category.label}</h2><span>{category.posts.length} {category.posts.length === 1 ? 'lectura' : 'lecturas'}</span></div><div class="blog-grid">{category.posts.map((post, index) => <BlogCard slug={post.id} title={post.data.title} description={post.data.description} category={post.data.category} publishDate={post.data.publishDate} readingTime={post.data.readingTime} tone={index % 3 === 1 ? 'lilac' : index % 3 === 2 ? 'yellow' : 'mint'} />)}</div></section>) : <div class="empty-blog"><span aria-hidden="true">✳</span><h2>El cuaderno está listo.</h2><p>Pronto encontrarás aquí nuevas guías y notas del estudio.</p></div>}
+    </section>
+    <section class="blog-prompt section-pad"><div><p class="eyebrow eyebrow-dark">¿QUÉ TE GUSTARÍA ENTENDER?</p><h2>Las buenas preguntas merecen respuestas claras.</h2></div><a class="button button-ink" href="/contacto/">Cuéntame tu pregunta <span aria-hidden="true">↗</span></a></section>
+  </main><SiteFooter /></div>
+</MainLayout>

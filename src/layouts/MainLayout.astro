@@ -1,0 +1,63 @@
+---
+import '../styles/global.css';
+import { BUSINESS_EMAIL, SITE_DESCRIPTION, SITE_NAME } from '../site';
+
+interface Props {
+  title: string;
+  description: string;
+  image?: string;
+  type?: 'website' | 'article';
+  schema?: Record<string, unknown> | Array<Record<string, unknown>>;
+  publishedTime?: string;
+  includeOrganization?: boolean;
+}
+
+const { title, description, image = '/social-card.png', type = 'website', schema = [], publishedTime, includeOrganization = false } = Astro.props;
+const siteUrl = Astro.site?.href.replace(/\/$/, '');
+const canonical = siteUrl ? new URL(Astro.url.pathname, `${siteUrl}/`).href : undefined;
+const pageSchemas = (Array.isArray(schema) ? schema : [schema]).map((item) => ({
+  '@context': 'https://schema.org',
+  ...(canonical ? { url: canonical } : {}),
+  ...item,
+}));
+const organizationSchema = includeOrganization ? [{
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    '@id': siteUrl ? `${siteUrl}/#organization` : undefined,
+    name: SITE_NAME,
+    email: BUSINESS_EMAIL,
+    url: siteUrl,
+  
+}] : [];
+const jsonLd = [
+  ...organizationSchema,
+  ...pageSchemas,
+].filter(Boolean).map((item) => JSON.stringify(item).replace(/</g, '\\u003c'));
+const absoluteImage = siteUrl ? new URL(image, `${siteUrl}/`).href : undefined;
+---
+<!doctype html>
+<html lang="es-CL">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#2937c2" />
+    <meta name="description" content={description} />
+    <meta property="og:type" content={type} />
+    <meta property="og:locale" content="es_CL" />
+    <meta property="og:site_name" content={SITE_NAME} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    {canonical && <link rel="canonical" href={canonical} />}
+    {canonical && <meta property="og:url" content={canonical} />}
+    {absoluteImage && <meta property="og:image" content={absoluteImage} />}
+    {type === 'article' && publishedTime && <meta property="article:published_time" content={publishedTime} />}
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title}</title>
+    {jsonLd.map((item) => <script type="application/ld+json" set:html={item} />)}
+  </head>
+  <body>
+    <slot />
+    <script>import '../scripts/animations';</script>
+  </body>
+</html>

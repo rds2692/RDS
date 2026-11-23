@@ -1,0 +1,15 @@
+---
+import Header from '../../components/Header.astro';
+import SiteFooter from '../../components/SiteFooter.astro';
+import MainLayout from '../../layouts/MainLayout.astro';
+import { SITE_NAME } from '../../site';
+const description = 'Proyectos y casos de estudio de Rangel Designs Studio. Compartimos trabajos con autorización, contexto y datos verificables.';
+---
+<MainLayout title="Proyectos y casos de estudio | RDS" description={description} schema={{ '@type': 'CollectionPage', name: 'Proyectos de Rangel Designs Studio', description, inLanguage: 'es-CL' }}>
+  <div id="top" class="site-shell"><Header /><main id="contenido">
+    <section class="directory-hero projects-hero section-pad"><nav class="breadcrumbs" aria-label="Migas de pan"><a href="/">Inicio</a><span>/</span><span aria-current="page">Proyectos</span></nav><p class="eyebrow"><span class="status-dot"></span> TRABAJO CON CONTEXTO Y EVIDENCIA</p><h1>Los proyectos se cuentan <span>con datos reales.</span></h1><p class="directory-intro">{SITE_NAME} publica casos de estudio con autorización y datos verificables. No usamos nombres, capturas, testimonios ni resultados de clientes sin permiso.</p></section>
+    <section class="case-promise section-pad"><div class="case-art" aria-hidden="true"><span>01</span><i>✳</i><b>CASE<br />FILE</b></div><div><p class="eyebrow eyebrow-dark">CÓMO DOCUMENTAMOS CADA CASO</p><h2>Un caso útil explica más que una captura.</h2><p>Cada historia debería explicar el contexto, el objetivo, el trabajo realizado y el período de medición. Los resultados solo se publican cuando pueden respaldarse con datos autorizados.</p><ol><li>Situación inicial y objetivo acordado</li><li>Arquitectura, páginas y trabajo implementado</li><li>Capturas reales con autorización</li><li>Período y fuente de cada resultado</li><li>Testimonio solo si el cliente lo aprueba</li></ol><a class="button button-ink" href="/contacto/">Conversemos sobre tu proyecto <span aria-hidden="true">↗</span></a></div></section>
+    <section class="projects-empty section-pad"><p class="eyebrow">EL PORTAFOLIO SE ACTUALIZA CON AUTORIZACIONES</p><h2>Mientras tanto, conoce cómo trabajamos.</h2><div><a href="/servicios/">Servicios <span>↗</span></a><a href="/estudio/">El estudio <span>↗</span></a><a href="/blog/">Guías del estudio <span>↗</span></a></div></section>
+    <section class="contact-band section-pad"><p class="eyebrow">¿TE GUSTARÍA QUE TU PROYECTO SEA EL PRÓXIMO?</p><h2>Diseñemos lo que<br />tu negocio necesita.</h2><a class="button button-paper" href="/contacto/">Hablemos <span aria-hidden="true">↗</span></a><span class="contact-spark" aria-hidden="true">✳</span></section>
+  </main><SiteFooter /></div>
+</MainLayout>
