@@ -5,9 +5,11 @@ import SiteFooter from '../components/SiteFooter.astro';
 import ServiceCard from '../components/ServiceCard.astro';
 import BlogCard from '../components/BlogCard.astro';
 import PriceCard from '../components/PriceCard.astro';
+import FaqAccordion from '../components/FaqAccordion.astro';
 import MainLayout from '../layouts/MainLayout.astro';
 import { SERVICES, SITE_DESCRIPTION, SITE_NAME } from '../site';
 import { AUDIT, MONTHLY_PLANS, WEB_PLANS, formatCLP } from '../data/pricing';
+import { FEATURED_FAQS } from '../data/faqs';
 
 const posts = (await getCollection('blog', ({ data }) => !data.draft))
   .sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf())
@@ -108,6 +110,18 @@ const schema = [
           <a class="method-step" href="/servicios/"><span>03</span><div><h3>Diseñamos o auditamos</h3><p>Construimos una web nueva o diagnosticamos la existente antes de intervenirla.</p><span class="card-link-label">Explorar servicios <span aria-hidden="true">↗</span></span></div><span class="step-mark" aria-hidden="true">↗</span></a>
           <a class="method-step" href="/seo/"><span>04</span><div><h3>Publicamos y evolucionamos</h3><p>Probamos los cambios aprobados y, si lo contratas, continuamos con posicionamiento mensual.</p><span class="card-link-label">Ver posicionamiento mensual <span aria-hidden="true">↗</span></span></div><span class="step-mark" aria-hidden="true">↗</span></a>
         </div>
+      </section>
+
+      <section class="home-faq-section section-pad" aria-labelledby="home-faq-title">
+        <div class="section-heading centered-heading">
+          <p class="eyebrow eyebrow-dark">RESPUESTAS ANTES DE EMPEZAR</p>
+          <h2 id="home-faq-title">Preguntas frecuentes</h2>
+          <p class="section-intro">Precio, plazos, SEO, cobertura y propiedad del sitio: lo que conviene aclarar antes de contratar un proyecto.</p>
+        </div>
+        <div class="home-faq-list">
+          <FaqAccordion items={FEATURED_FAQS} />
+        </div>
+        <a class="button button-ink section-end-button" href="/preguntas-frecuentes/">Ver todas las preguntas <span aria-hidden="true">↗</span></a>
       </section>
 
       <section class="home-plans section-pad" id="precios" aria-labelledby="web-plans-title">

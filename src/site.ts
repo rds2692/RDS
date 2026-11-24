@@ -61,5 +61,6 @@ export const NAV_ITEMS = [
   { href: '/precios/', label: 'Precios' },
   { href: '/proyectos/', label: 'Proyectos' },
   { href: '/blog/', label: 'Ideas' },
+  { href: '/preguntas-frecuentes/', label: 'FAQ' },
   { href: '/estudio/', label: 'Estudio' },
 ];
