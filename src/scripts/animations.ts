@@ -1,22 +1,41 @@
 import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 const init = () => {
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (reduceMotion) return;
-
-  gsap.registerPlugin(ScrollTrigger);
-  ScrollTrigger.config({ ignoreMobileResize: true });
+  const compactMotion = window.matchMedia('(max-width: 760px)').matches;
 
   const controller = new AbortController();
   const context = gsap.context(() => {
-    const intro = gsap.timeline({ defaults: { ease: 'power3.out' } });
-    intro
-      .from('.hero-wordmark', { y: 52, scale: 0.9, opacity: 0, duration: 1.15, ease: 'expo.out' })
-      .from('.hero-tagline', { y: 36, opacity: 0, duration: 0.8 }, '-=0.62')
-      .from('.hero-subline, .hero-description', { y: 20, opacity: 0, stagger: 0.08, duration: 0.62 }, '-=0.46')
-      .from('.hero-actions, .hero-scene-hint', { y: 16, opacity: 0, stagger: 0.08, duration: 0.55 }, '-=0.38')
-      .from('.hero-kicker', { opacity: 0, duration: 0.7 }, 0);
+    if (document.querySelector('.hero-wordmark')) {
+      const intro = gsap.timeline({ defaults: { ease: 'power3.out' } });
+      intro
+        .from('.hero-wordmark', {
+          y: compactMotion ? 34 : 52,
+          scale: compactMotion ? 0.95 : 0.9,
+          opacity: compactMotion ? 1 : 0,
+          duration: compactMotion ? 0.72 : 1.15,
+          ease: 'expo.out',
+        })
+        .from('.hero-tagline', {
+          y: compactMotion ? 22 : 36,
+          opacity: compactMotion ? 1 : 0,
+          duration: compactMotion ? 0.55 : 0.8,
+        }, compactMotion ? '-=0.4' : '-=0.62')
+        .from('.hero-subline, .hero-description', {
+          y: compactMotion ? 14 : 20,
+          opacity: compactMotion ? 1 : 0,
+          stagger: 0.08,
+          duration: compactMotion ? 0.48 : 0.62,
+        }, compactMotion ? '-=0.28' : '-=0.46')
+        .from('.hero-actions, .hero-scene-hint', {
+          y: compactMotion ? 10 : 16,
+          opacity: compactMotion ? 1 : 0,
+          stagger: 0.08,
+          duration: compactMotion ? 0.42 : 0.55,
+        }, compactMotion ? '-=0.2' : '-=0.38')
+        .from('.hero-kicker', { opacity: 0, duration: 0.7 }, 0);
+    }
 
     gsap.utils.toArray<HTMLElement>('.service-tile, .button-primary').forEach((element) => {
       const lift = gsap.quickTo(element, 'y', { duration: 0.22, ease: 'power2.out' });
@@ -47,20 +66,34 @@ const init = () => {
   const revealHeadings = gsap.utils.toArray<HTMLElement>(
     '.section-heading, .method-intro, .service-line-heading, .contact-form-heading, .blog-index-top, .blog-category-title, .contact-bottom > .eyebrow',
   );
-  revealHeadings.forEach((heading) => {
+  const observers: IntersectionObserver[] = [];
+
+  const observeReveal = (
+    targets: HTMLElement[],
+    onReveal: (target: HTMLElement) => void,
+    threshold = 0.08,
+  ) => {
+    if (!targets.length) return;
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        const target = entry.target as HTMLElement;
+        onReveal(target);
+        observer.unobserve(target);
+      });
+    }, { threshold, rootMargin: '0px 0px -4% 0px' });
+    targets.forEach((target) => observer.observe(target));
+    observers.push(observer);
+  };
+
+  observeReveal(revealHeadings, (heading) => {
     gsap.from(heading, {
-      y: 42,
-      opacity: 0,
-      duration: 0.82,
+      y: 38,
+      duration: 0.78,
       ease: 'power3.out',
-      clearProps: 'transform,opacity',
-      scrollTrigger: {
-        trigger: heading,
-        start: 'top 88%',
-        once: true,
-      },
+      clearProps: 'transform',
     });
-  });
+  }, 0.1);
 
   const groupedSections = [
     '.discipline-grid',
@@ -86,22 +119,18 @@ const init = () => {
       const items = gsap.utils.toArray<HTMLElement>(':scope > *', group);
       if (!items.length) return;
 
-      gsap.from(items, {
-        y: 62,
-        opacity: 0,
-        scale: 0.975,
-        rotationX: 3,
-        transformOrigin: '50% 100%',
-        transformPerspective: 1000,
-        duration: 0.86,
-        stagger: 0.09,
-        ease: 'power3.out',
-        clearProps: 'transform,opacity',
-        scrollTrigger: {
-          trigger: group,
-          start: 'top 84%',
-          once: true,
-        },
+      observeReveal([group], () => {
+        gsap.from(items, {
+          y: 54,
+          scale: 0.985,
+          rotationX: 2.5,
+          transformOrigin: '50% 100%',
+          transformPerspective: 1000,
+          duration: 0.8,
+          stagger: 0.075,
+          ease: 'power3.out',
+          clearProps: 'transform',
+        });
       });
     });
   });
@@ -127,11 +156,6 @@ const init = () => {
     '.pricing-explainer',
     '.table-scroll',
     '.contact-bottom',
-    '.directory-hero',
-    '.service-hero',
-    '.blog-index-hero',
-    '.contact-page-grid',
-    '.article-header',
     '.footer-top',
     '.footer-bottom',
   ];
@@ -143,42 +167,30 @@ const init = () => {
       );
       if (!items.length) return;
 
-      gsap.from(items, {
-        y: 48,
-        opacity: 0,
-        duration: 0.78,
-        stagger: 0.1,
-        ease: 'power3.out',
-        clearProps: 'transform,opacity',
-        scrollTrigger: {
-          trigger: container,
-          start: 'top 84%',
-          once: true,
-        },
+      observeReveal([container], () => {
+        gsap.from(items, {
+          y: 42,
+          duration: 0.72,
+          stagger: 0.08,
+          ease: 'power3.out',
+          clearProps: 'transform',
+        });
       });
     });
   });
 
-  gsap.utils.toArray<HTMLElement>('.ai-disclaimer, .local-price-note').forEach((element) => {
+  observeReveal(gsap.utils.toArray<HTMLElement>('.ai-disclaimer, .local-price-note'), (element) => {
     gsap.from(element, {
-      y: 26,
-      opacity: 0,
-      duration: 0.68,
+      y: 24,
+      duration: 0.65,
       ease: 'power2.out',
-      clearProps: 'transform,opacity',
-      scrollTrigger: {
-        trigger: element,
-        start: 'top 90%',
-        once: true,
-      },
+      clearProps: 'transform',
     });
   });
 
-  window.addEventListener('load', () => ScrollTrigger.refresh(), { once: true });
-
   window.addEventListener('pagehide', () => {
     controller.abort();
-    ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+    observers.forEach((observer) => observer.disconnect());
     context.revert();
   }, { once: true });
 };

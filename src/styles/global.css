@@ -426,7 +426,8 @@ h3 { font-size: clamp(1.45rem, 2vw, 2rem); line-height: 1.05; }
 .service-note .button { flex: 0 0 auto; }
 .existing-site-section { background: #e9e3d8; }
 .monthly-pricing { background: #e9e3d8; }
-.table-scroll { margin-top: 2.5rem; overflow-x: auto; border: 1px solid var(--ink); background: var(--paper); }
+.table-scroll { margin-top: 2.5rem; overflow-x: auto; overscroll-behavior-inline: contain; -webkit-overflow-scrolling: touch; border: 1px solid var(--ink); background: var(--paper); }
+.table-scroll-hint { display: none; }
 .plan-comparison { width: 100%; min-width: 760px; border-collapse: collapse; text-align: left; }
 .plan-comparison caption { padding: 1rem; text-align: left; font: 900 1.3rem var(--font-family); }
 .plan-comparison th, .plan-comparison td { padding: .85rem 1rem; border-top: 1px solid rgb(23 23 23 / 25%); vertical-align: top; font-size: .88rem; }
@@ -712,6 +713,7 @@ h2,
 h3 {
   font-weight: 900;
   letter-spacing: -.065em;
+  overflow-wrap: break-word;
 }
 
 h1,
@@ -1903,6 +1905,11 @@ h2 span {
   margin-inline: auto;
 }
 
+.service-hero-grid > * {
+  min-width: 0;
+  max-width: 100%;
+}
+
 .service-hero-art {
   min-height: 390px;
   border: 0;
@@ -2282,7 +2289,18 @@ h2 span {
   }
 
   .discipline-card {
-    min-height: 270px;
+    min-height: 0;
+    height: auto;
+  }
+
+  .discipline-card h3,
+  .discipline-card p,
+  .discipline-card .card-link-label {
+    flex-shrink: 0;
+  }
+
+  .discipline-card .discipline-art {
+    flex: 1 0 150px;
   }
 
   .service-card,
@@ -2302,11 +2320,45 @@ h2 span {
     min-height: 310px;
   }
 
+  .service-hero-art {
+    min-height: 330px;
+    padding: 1rem;
+  }
+
+  .service-hero-word {
+    max-width: 94%;
+    font-size: clamp(2rem, 9vw, 3rem);
+    overflow-wrap: anywhere;
+  }
+
+  .contact-prompt {
+    padding: 1.2rem;
+  }
+
+  .contact-prompt h2 {
+    font-size: clamp(1.5rem, 6.5vw, 2rem);
+    line-height: 1;
+  }
+
+  .contact-prompt .prompt-doodle {
+    top: .7rem;
+    right: .75rem;
+    font-size: 1.35rem;
+  }
+
   .directory-hero h1,
   .service-hero h1,
   .contact-page h1,
   .blog-index-hero h1 {
-    font-size: clamp(2.8rem, 12.8vw, 4.5rem);
+    max-width: 100%;
+    font-size: clamp(1.7rem, 8.4vw, 3rem);
+    line-height: .94;
+  }
+
+  .service-intro,
+  .directory-intro {
+    width: 100%;
+    max-width: 100%;
   }
 
   .footer-links {
@@ -2359,7 +2411,7 @@ h2 span {
 .service-hero-grid {
   max-width: 1120px;
   margin-inline: auto;
-  grid-template-columns: 1fr;
+  grid-template-columns: minmax(0, 1fr);
   justify-items: center;
   gap: 2.4rem;
 }
@@ -2367,6 +2419,8 @@ h2 span {
 .service-hero-grid > div:first-child {
   display: flex;
   width: 100%;
+  min-width: 0;
+  max-width: 100%;
   flex-direction: column;
   align-items: center;
 }
@@ -2377,6 +2431,8 @@ h2 span {
 
 .service-hero-art {
   width: min(100%, 880px);
+  min-width: 0;
+  max-width: 100%;
   min-height: 290px;
   margin-inline: auto;
 }
@@ -2624,6 +2680,14 @@ h2 span {
   text-align: center;
 }
 
+.article-header .eyebrow {
+  justify-content: center;
+}
+
+.article-header .article-dek {
+  color: #4c4a46;
+}
+
 .article-header h1,
 .article-dek {
   margin-inline: auto;
@@ -2732,6 +2796,99 @@ a.process-card:hover,
   }
 
   .service-hero-art {
-    min-height: 250px;
+    min-height: 330px;
+  }
+}
+
+@media (max-width: 520px) {
+  .table-scroll-hint {
+    display: none;
+  }
+
+  .table-scroll {
+    overflow: visible;
+    border: 0;
+    background: transparent;
+  }
+
+  .plan-comparison {
+    display: block;
+    min-width: 0;
+    border-collapse: collapse;
+    background: transparent;
+  }
+
+  .plan-comparison caption {
+    padding: .5rem 0 1rem;
+    text-align: center;
+  }
+
+  .plan-comparison thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  .plan-comparison,
+  .plan-comparison tbody,
+  .plan-comparison tr,
+  .plan-comparison th,
+  .plan-comparison td {
+    display: block;
+    width: 100%;
+  }
+
+  .plan-comparison tbody {
+    display: grid;
+    gap: .8rem;
+  }
+
+  .plan-comparison tbody tr {
+    border: 1px solid #d1ccc3;
+    background: white;
+  }
+
+  .plan-comparison tbody th,
+  .plan-comparison tbody td {
+    width: 100%;
+    padding: .8rem 1rem;
+    border-top: 1px solid #ddd7ce;
+    text-align: center;
+  }
+
+  .plan-comparison tbody th {
+    border-top: 0;
+    background: var(--blue);
+    color: white;
+    font-size: .9rem;
+  }
+
+  .plan-comparison tbody td::before {
+    content: attr(data-label);
+    display: block;
+    margin-bottom: .28rem;
+    color: #64645e;
+    font-size: .54rem;
+    font-weight: 800;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+  }
+
+  .contact-band h2 {
+    max-width: 100%;
+    font-size: clamp(1.9rem, 8.6vw, 3.1rem);
+    line-height: .94;
+    text-align: center;
+  }
+
+  .section-heading h2 {
+    font-size: clamp(2rem, 8.8vw, 3.2rem);
+    line-height: .94;
   }
 }
