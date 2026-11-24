@@ -4,7 +4,7 @@ import { fileURLToPath } from 'node:url';
 
 const projectRoot = path.dirname(fileURLToPath(import.meta.url));
 const dist = path.join(projectRoot, '..', 'dist');
-const siteValue = process.env.SITE_URL;
+const siteValue = process.env.SITE_URL ?? 'https://rangel.design';
 
 if (!siteValue) {
   console.warn('SITE_URL no está configurado. Se omiten canonical absolutos y sitemap hasta que se defina el dominio de producción.');

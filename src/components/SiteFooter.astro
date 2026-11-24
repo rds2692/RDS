@@ -13,7 +13,7 @@ const year = new Date().getFullYear();
     </div>
     <div class="footer-links">
       <div><h2>Explora</h2>{NAV_ITEMS.map((item) => <a href={item.href}>{item.label}</a>)}<a href="/contacto/">Contacto</a></div>
-      <div><h2>Servicios</h2>{SERVICES.map((service) => <a href={service.slug}>{service.shortTitle}</a>)}</div>
+      <div><h2>Servicios</h2>{SERVICES.map((service) => <a href={service.slug}>{service.shortTitle}</a>)}<a href="/diseno-web-empresas/">Web para empresas</a><a href="/rediseno-web/">Rediseño web</a><a href="/diseno-web-santiago/">Diseño web en Santiago</a><a href="/seo-local-santiago/">SEO local Santiago</a></div>
       <div class="footer-contact"><h2>¿Tienes una idea?</h2><a class="footer-email" href={`mailto:${BUSINESS_EMAIL}`}>{BUSINESS_EMAIL} ↗</a><a href="/contacto/">Cuéntame tu proyecto</a></div>
     </div>
   </div>

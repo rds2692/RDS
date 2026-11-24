@@ -1,0 +1,51 @@
+---
+import { getCollection } from 'astro:content';
+import ServicePage from '../components/ServicePage.astro';
+
+const posts = (await getCollection('blog', ({ data }) => !data.draft))
+  .filter(({ data }) => data.category === 'Diseño web' || data.category === 'SEO')
+  .slice(0, 2);
+---
+<ServicePage
+  title="Rediseño de páginas web"
+  metaTitle="Rediseño de Páginas Web en Chile | RDS"
+  description="Renueva tu sitio sin perder lo que ya funciona. Auditoría, arquitectura, diseño, SEO técnico inicial y redirecciones dentro del alcance aprobado."
+  intro="Un rediseño no debería comenzar borrando todo. Primero revisamos qué posiciona, qué usa la gente, qué contenido sigue vigente y qué problemas técnicos pueden afectar una migración. Después definimos una renovación que mejore claridad, experiencia y mantenibilidad sin perder activos digitales valiosos."
+  serviceType="Rediseño y migración de sitios web"
+  tag="REDISEÑO / DIAGNÓSTICO PRIMERO"
+  tone="orange"
+  outcomes={[
+    { title: 'Conservar lo que funciona', text: 'Identificamos páginas, URLs, contenidos y conversiones que deben mantenerse o migrarse con cuidado.' },
+    { title: 'Corregir la estructura', text: 'Reordenamos servicios, mensajes y rutas para que el sitio resuelva mejor las preguntas de los clientes.' },
+    { title: 'Reducir riesgos de migración', text: 'Documentamos redirecciones, metadatos, enlaces internos y comprobaciones antes y después del lanzamiento.' },
+  ]}
+  deliverables={[
+    'Revisión de la plataforma, el tema y las dependencias conocidas',
+    'Inventario de páginas, contenidos y URLs relevantes',
+    'Propuesta de nueva arquitectura e interfaz',
+    'Diseño y desarrollo de las páginas acordadas',
+    'Mapa de redirecciones para URLs que cambian',
+    'Revisión de metadatos, encabezados y enlaces internos',
+    'Pruebas de navegación, formularios y visualización móvil',
+    'Documentación del alcance y del lanzamiento',
+  ]}
+  process={[
+    { title: 'Diagnóstico', text: 'Revisamos sitio actual, plataforma, URLs, contenido, medición y problemas visibles.' },
+    { title: 'Decisión de alcance', text: 'Definimos qué se conserva, qué se optimiza y qué se reemplaza, con riesgos y dependencias.' },
+    { title: 'Nuevo diseño', text: 'Construimos la experiencia y la arquitectura sobre objetivos concretos, no sobre una plantilla.' },
+    { title: 'Migración y revisión', text: 'Publicamos con redirecciones y comprobaciones acordadas, verificando lo que puede revisarse.' },
+  ]}
+  faqs={[
+    { question: '¿Es necesario rediseñar todo el sitio?', answer: 'No siempre. La primera revisión puede mostrar que conviene mejorar estructura, velocidad o contenido. El rediseño completo se propone cuando los problemas estructurales justifican el cambio.' },
+    { question: '¿Se pueden perder las posiciones actuales?', answer: 'Una migración mal planificada puede afectar tráfico. Por eso revisamos URLs, redirecciones, canonicales, contenidos y enlaces antes de publicar. No se puede garantizar que todas las posiciones permanezcan iguales.' },
+    { question: '¿Incluye copia de seguridad?', answer: 'Antes de intervenir se verifica o coordina un respaldo autorizado. Los cambios se realizan sólo después de acordar el acceso, el alcance y la forma de reversión.' },
+    { question: '¿Puedo mantener mi hosting?', answer: 'Sí, si es compatible con la nueva implementación o puede configurarse correctamente. La infraestructura se revisa antes de confirmar la propuesta.' },
+  ]}
+  posts={posts}
+  note={{ title: '¿No sabes si necesitas rediseño?', text: 'Una auditoría independiente permite revisar plataforma, arquitectura, indexación, contenido y riesgos antes de decidir el alcance.', href: '/auditoria-seo/', cta: 'Ver auditoría SEO' }}
+  relatedLinks={[
+    { title: 'Diseño y desarrollo web', text: 'Revisa el proceso completo para crear un sitio nuevo desde cero.', href: '/diseno-web/' },
+    { title: 'Diseño web en Santiago', text: 'Explora la cobertura para empresas de la Región Metropolitana.', href: '/diseno-web-santiago/' },
+    { title: 'Auditoría de sitios existentes', text: 'Entiende el diagnóstico previo a cualquier intervención.', href: '/auditoria-seo/' },
+  ]}
+/>

@@ -1,5 +1,6 @@
 ---
 title: "¿Cómo preparar una web para las búsquedas con inteligencia artificial?"
+metaTitle: "Webs para búsquedas con IA: guía práctica | RDS"
 description: "La visibilidad en experiencias de búsqueda con IA parte por un sitio accesible, contenido útil y respuestas claras. No existe una táctica que garantice citas."
 publishDate: 2026-11-23
 category: "SEO + IA"

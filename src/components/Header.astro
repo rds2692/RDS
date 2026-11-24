@@ -12,7 +12,7 @@ const currentPath = Astro.url.pathname;
     <span class="menu-toggle-label">Menú</span><span class="menu-icon" aria-hidden="true"><i></i><i></i></span>
   </button>
   <nav class="primary-nav" id="primary-nav" aria-label="Navegación principal" data-nav>
-    {NAV_ITEMS.map((item) => <a href={item.href} aria-current={currentPath === item.href || (item.href === '/servicios/' && ['/diseno-web/', '/seo/', '/auditoria-seo/', '/seo-local/', '/seo-ia/'].includes(currentPath)) || (item.href === '/proyectos/' && currentPath.startsWith('/proyectos/')) ? 'page' : undefined}>{item.label}</a>)}
+    {NAV_ITEMS.map((item) => <a href={item.href} aria-current={currentPath === item.href || (item.href === '/servicios/' && (currentPath.startsWith('/diseno-web') || currentPath.startsWith('/seo') || currentPath === '/auditoria-seo/' || currentPath === '/rediseno-web/')) || (item.href === '/proyectos/' && currentPath.startsWith('/proyectos/')) ? 'page' : undefined}>{item.label}</a>)}
     <a class="nav-cta" href="/contacto/">Hablemos <span aria-hidden="true">↗</span></a>
   </nav>
 </header>

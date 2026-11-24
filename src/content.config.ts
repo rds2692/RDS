@@ -5,6 +5,7 @@ const blog = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/blog' }),
   schema: z.object({
     title: z.string(),
+    metaTitle: z.string().optional(),
     description: z.string(),
     publishDate: z.coerce.date(),
     category: z.enum(['Diseño web', 'SEO', 'SEO + IA']),

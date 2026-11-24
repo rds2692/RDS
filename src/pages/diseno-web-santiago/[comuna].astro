@@ -1,0 +1,14 @@
+---
+import LocalAreaPage from '../../components/LocalAreaPage.astro';
+import { LOCAL_AREAS } from '../../data/local-areas';
+
+export function getStaticPaths() {
+  return LOCAL_AREAS.map((area) => ({
+    params: { comuna: area.slug },
+    props: { area },
+  }));
+}
+
+const { area } = Astro.props;
+---
+<LocalAreaPage area={area} />

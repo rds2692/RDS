@@ -1,10 +1,11 @@
 export const SITE_NAME = 'Rangel Designs Studio';
+export const FOUNDER_NAME = 'Armando Rangel';
 // Conservado desde el sitio existente. Confirmar el correo antes de publicar.
 export const BUSINESS_EMAIL = 'hola@rangel.design';
 export const BUSINESS_PHONE = '';
 export const WHATSAPP_URL = '';
 export const SOCIAL_LINKS: { label: string; href: string }[] = [];
-export const SITE_DESCRIPTION = 'Diseño web, SEO local y visibilidad digital para empresas de servicios, profesionales y pymes de Chile y Latinoamérica.';
+export const SITE_DESCRIPTION = 'Diseño web y SEO local para pymes y profesionales de Santiago y Chile. Creamos sitios claros, rápidos y preparados para captar consultas.';
 export const SERVICE_AREA = 'Chile y Latinoamérica';
 
 export const SERVICES = [

@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
 import { BUSINESS_EMAIL, SITE_DESCRIPTION, SITE_NAME } from '../site';
+import { getLocalArea, LOCAL_AREAS } from '../data/local-areas';
 
 interface Props {
   title: string;
@@ -12,25 +13,99 @@ interface Props {
   includeOrganization?: boolean;
 }
 
-const { title, description, image = '/social-card.png', type = 'website', schema = [], publishedTime, includeOrganization = false } = Astro.props;
+const { title, description, image = '/social-card.png', type = 'website', schema = [], publishedTime } = Astro.props;
 const siteUrl = Astro.site?.href.replace(/\/$/, '');
 const canonical = siteUrl ? new URL(Astro.url.pathname, `${siteUrl}/`).href : undefined;
+const pathParts = Astro.url.pathname.split('/').filter(Boolean);
+const routeLabels: Record<string, string> = {
+  'servicios': 'Servicios',
+  'diseno-web': 'Diseño web',
+  'diseno-web-empresas': 'Diseño web para empresas',
+  'diseno-web-santiago': 'Diseño web en Santiago',
+  'rediseno-web': 'Rediseño web',
+  'seo': 'Posicionamiento SEO',
+  'seo-local': 'SEO local',
+  'seo-local-santiago': 'SEO local en Santiago',
+  'auditoria-seo': 'Auditoría SEO',
+  'seo-ia': 'GEO y AEO',
+  'precios': 'Precios',
+  'proyectos': 'Proyectos',
+  'blog': 'Ideas',
+  'estudio': 'Estudio',
+  'contacto': 'Contacto',
+};
+const pageLabel = title.split(' | ')[0];
+const breadcrumbItems = pathParts.map((part, index) => {
+  const localArea = pathParts[index - 1] === 'diseno-web-santiago' ? getLocalArea(part) : undefined;
+  const isArticle = pathParts[0] === 'blog' && index === 1;
+  return {
+    name: isArticle ? pageLabel : localArea?.name ?? routeLabels[part] ?? part.replaceAll('-', ' '),
+    path: `/${pathParts.slice(0, index + 1).join('/')}/`,
+  };
+});
+const serviceBreadcrumbPaths = new Set(['/diseno-web/', '/diseno-web-empresas/', '/rediseno-web/', '/seo/', '/seo-local/', '/seo-local-santiago/', '/auditoria-seo/', '/seo-ia/', '/diseno-web-santiago/']);
+if (serviceBreadcrumbPaths.has(Astro.url.pathname) && !breadcrumbItems.some((item) => item.name === 'Servicios')) {
+  breadcrumbItems.unshift({ name: 'Servicios', path: '/servicios/' });
+}
+const breadcrumbSchema = Astro.url.pathname === '/' ? [] : [{
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    {
+      '@type': 'ListItem',
+      position: 1,
+      name: 'Inicio',
+      item: siteUrl ? `${siteUrl}/` : '/',
+    },
+    ...breadcrumbItems.map((item, index) => ({
+      '@type': 'ListItem',
+      position: index + 2,
+      name: item.name,
+      item: siteUrl ? new URL(item.path, `${siteUrl}/`).href : item.path,
+    })),
+  ],
+}];
 const pageSchemas = (Array.isArray(schema) ? schema : [schema]).map((item) => ({
   '@context': 'https://schema.org',
   ...(canonical ? { url: canonical } : {}),
   ...item,
 }));
-const organizationSchema = includeOrganization ? [{
-    '@context': 'https://schema.org',
-    '@type': 'Organization',
-    '@id': siteUrl ? `${siteUrl}/#organization` : undefined,
-    name: SITE_NAME,
-    email: BUSINESS_EMAIL,
-    url: siteUrl,
-  
-}] : [];
+const organizationId = siteUrl ? `${siteUrl}/#organization` : '/#organization';
+const organizationSchema = [{
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  '@id': organizationId,
+  name: SITE_NAME,
+  email: BUSINESS_EMAIL,
+  url: siteUrl,
+  logo: siteUrl ? `${siteUrl}/favicon.svg` : '/favicon.svg',
+  areaServed: [
+    { '@type': 'Country', name: 'Chile' },
+    { '@type': 'AdministrativeArea', name: 'Región Metropolitana' },
+    ...LOCAL_AREAS.map((area) => ({ '@type': 'AdministrativeArea', name: area.name })),
+  ],
+  knowsAbout: [
+    'Diseño web',
+    'Desarrollo web',
+    'SEO',
+    'SEO local',
+    'Google Business Profile',
+    'GEO',
+    'AEO',
+  ],
+}];
+const websiteSchema = [{
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  '@id': siteUrl ? `${siteUrl}/#website` : '/#website',
+  name: SITE_NAME,
+  url: siteUrl,
+  inLanguage: 'es-CL',
+  publisher: { '@id': organizationId },
+}];
 const jsonLd = [
   ...organizationSchema,
+  ...websiteSchema,
+  ...breadcrumbSchema,
   ...pageSchemas,
 ].filter(Boolean).map((item) => JSON.stringify(item).replace(/</g, '\\u003c'));
 const absoluteImage = siteUrl ? new URL(image, `${siteUrl}/`).href : undefined;

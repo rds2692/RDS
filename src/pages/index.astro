@@ -13,7 +13,6 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft))
   .sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf())
   .slice(0, 3);
 const schema = [
-  { '@type': 'WebSite', name: SITE_NAME, inLanguage: 'es-CL' },
   {
     '@type': 'WebPage',
     name: 'Diseño web, SEO y estrategia digital | Rangel Designs Studio',
@@ -23,7 +22,7 @@ const schema = [
   },
 ];
 ---
-<MainLayout title="Diseño web y SEO que se entienden | RDS" description={SITE_DESCRIPTION} schema={schema} includeOrganization={true}>
+<MainLayout title="Diseño Web y SEO en Santiago | Rangel Designs Studio" description={SITE_DESCRIPTION} schema={schema} includeOrganization={true}>
   <div id="top" class="site-shell">
     <Header />
     <main id="contenido">
@@ -75,6 +74,21 @@ const schema = [
         </div>
         <div class="services-grid">
           {SERVICES.map((service) => <ServiceCard {...service} href={service.slug} />)}
+        </div>
+      </section>
+
+      <section class="local-directory-section section-pad" aria-labelledby="local-directory-title">
+        <div class="section-heading heading-split">
+          <div><p class="eyebrow eyebrow-dark">DISEÑO WEB EN SANTIAGO</p><h2 id="local-directory-title">Proyectos para empresas de la Región Metropolitana.</h2></div>
+          <p class="section-intro">Explora las comunas donde RDS atiende proyectos. Cada página describe un contexto distinto y la modalidad real de trabajo.</p>
+        </div>
+        <div class="nearby-area-grid">
+          <a href="/diseno-web-santiago/"><span>HUB / SANTIAGO</span><strong>Diseño web en Santiago</strong><i aria-hidden="true">↗</i></a>
+          <a href="/diseno-web-santiago/providencia/"><span>ZONA ORIENTE</span><strong>Providencia</strong><i aria-hidden="true">↗</i></a>
+          <a href="/diseno-web-santiago/las-condes/"><span>ZONA ORIENTE</span><strong>Las Condes</strong><i aria-hidden="true">↗</i></a>
+          <a href="/diseno-web-santiago/nunoa/"><span>SANTIAGO</span><strong>Ñuñoa</strong><i aria-hidden="true">↗</i></a>
+          <a href="/diseno-web-santiago/maipu/"><span>ZONA PONIENTE</span><strong>Maipú</strong><i aria-hidden="true">↗</i></a>
+          <a href="/diseno-web-santiago/puente-alto/"><span>ZONA SUR</span><strong>Puente Alto</strong><i aria-hidden="true">↗</i></a>
         </div>
       </section>
 

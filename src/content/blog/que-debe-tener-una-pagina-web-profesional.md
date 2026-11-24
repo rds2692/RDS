@@ -1,5 +1,6 @@
 ---
 title: "¿Qué debe tener una página web profesional para generar consultas?"
+metaTitle: "Qué debe tener una página web profesional | RDS"
 description: "Una página web profesional explica qué ofreces, para quién es, por qué confiar y cuál es el siguiente paso. Revisa esta estructura antes de publicar."
 publishDate: 2026-11-23
 category: "Diseño web"

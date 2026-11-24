@@ -1,0 +1,55 @@
+---
+import { getCollection } from 'astro:content';
+import ServicePage from '../components/ServicePage.astro';
+import { MONTHLY_PLANS } from '../data/pricing';
+
+const posts = (await getCollection('blog', ({ data }) => !data.draft))
+  .filter(({ data }) => data.category === 'SEO' || data.category === 'SEO + IA')
+  .slice(0, 2);
+---
+<ServicePage
+  title="SEO local en Santiago"
+  metaTitle="SEO Local para Empresas de Santiago | RDS"
+  description="Mejora la presencia de tu empresa en búsquedas de Santiago con una base técnica clara, contenido local útil y seguimiento en Search Console."
+  intro="El SEO local conecta la información real de tu empresa con las búsquedas de clientes de Santiago. Trabajamos la web, los servicios, la coherencia de los datos y las señales que ayudan a Google a entender qué haces y dónde puedes atender. No confundimos páginas por comuna con una oficina física ni prometemos aparecer primero en Maps."
+  serviceType="SEO local y posicionamiento para empresas"
+  tag="SEO LOCAL / SANTIAGO"
+  tone="mint"
+  outcomes={[
+    { title: 'Una base rastreable', text: 'Revisamos indexación, arquitectura, enlaces internos, rendimiento y datos estructurados antes de ampliar contenidos.' },
+    { title: 'Contenido local con sustancia', text: 'Cada página de servicio o comuna debe responder preguntas reales y describir cobertura sin duplicar textos cambiando sólo el nombre del lugar.' },
+    { title: 'Medición desde el inicio', text: 'Configuramos Search Console y una base de analítica para observar consultas, páginas y acciones de contacto.' },
+  ]}
+  deliverables={[
+    'Revisión de indexación y páginas prioritarias',
+    'Arquitectura de servicios y páginas locales',
+    'Optimización de títulos, descripciones y encabezados',
+    'Datos estructurados Service y Organization cuando correspondan',
+    'Recomendaciones para Google Business Profile',
+    'Enlaces internos entre servicios, precios y contenidos',
+    'Revisión de coherencia de datos de empresa',
+    'Informe mensual según el plan contratado',
+  ]}
+  process={[
+    { title: 'Revisar el punto de partida', text: 'Analizamos el sitio, la cobertura real, Search Console y la información pública de la empresa.' },
+    { title: 'Definir prioridades', text: 'Elegimos páginas y consultas según relevancia comercial, estado técnico y capacidad de crear contenido útil.' },
+    { title: 'Implementar', text: 'Trabajamos dentro del alcance mensual acordado: páginas, metadatos, enlaces y contenido.' },
+    { title: 'Medir y ajustar', text: 'Observamos impresiones, clics, posiciones y conversiones disponibles para priorizar el siguiente ciclo.' },
+  ]}
+  faqs={[
+    { question: '¿Páginas por comuna sirven para aparecer más cerca en Google?', answer: 'No por sí solas. Los resultados locales se basan en relevancia, distancia y prominencia. Una página puede mejorar la relevancia orgánica, pero la distancia depende de la ubicación real y Google Business Profile.' },
+    { question: '¿Puedo crear un perfil de Google por comuna?', answer: 'No. Google recomienda un solo perfil por empresa. Las zonas atendidas se configuran en el perfil cuando corresponden; no se crean oficinas inexistentes.' },
+    { question: '¿Cuántas comunas conviene publicar?', answer: 'Primero trabajamos una cobertura acotada y medimos. Recomendamos no crear decenas de páginas similares sin contenido, evidencia local y capacidad de mantenimiento.' },
+    { question: '¿Se garantiza aparecer en Google Maps?', answer: 'No. El posicionamiento local depende de varios factores y no existe garantía de una posición. El trabajo busca mejorar señales verificables y la claridad del sitio y del perfil.' },
+  ]}
+  posts={posts}
+  plans={MONTHLY_PLANS}
+  pricingHeading="Planes de posicionamiento local"
+  pricingIntro="Los planes mensuales se contratan después de revisar el estado del sitio. Si RDS no construyó la web, primero se recomienda una auditoría."
+  note={{ title: '¿La web la construyó otro equipo?', text: 'Antes de intervenir revisamos plataforma, accesos, riesgos y estado de indexación. La implementación se cotiza por separado.', href: '/auditoria-seo/', cta: 'Ver auditoría SEO' }}
+  relatedLinks={[
+    { title: 'Diseño web en Santiago', text: 'Conoce el servicio de diseño y desarrollo para empresas de la Región Metropolitana.', href: '/diseno-web-santiago/' },
+    { title: 'Páginas por zona', text: 'Revisa cómo tratamos la cobertura y la creación de páginas locales.', href: '/seo-local/' },
+    { title: 'Precios y condiciones', text: 'Consulta los planes mensuales y los alcances de cada opción.', href: '/precios/' },
+  ]}
+/>

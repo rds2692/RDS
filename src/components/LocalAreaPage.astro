@@ -1,0 +1,174 @@
+---
+import Header from './Header.astro';
+import SiteFooter from './SiteFooter.astro';
+import MainLayout from '../layouts/MainLayout.astro';
+import { getLocalArea, LOCAL_AREAS, type LocalArea } from '../data/local-areas';
+
+interface Props {
+  area: LocalArea;
+}
+
+const { area } = Astro.props;
+const nearbyAreas = area.nearby
+  .map((slug) => getLocalArea(slug))
+  .filter((item): item is LocalArea => Boolean(item));
+const serviceLinks = [
+  { href: '/diseno-web/', label: 'Diseño y desarrollo web' },
+  { href: '/diseno-web-empresas/', label: 'Webs para empresas' },
+  { href: '/rediseno-web/', label: 'Rediseño web' },
+  { href: '/seo/', label: 'Posicionamiento SEO' },
+];
+const schema = [
+  {
+    '@type': 'Service',
+    name: `Diseño web en ${area.name}`,
+    serviceType: `Diseño y desarrollo web para empresas en ${area.name}`,
+    description: area.description,
+    areaServed: { '@type': 'AdministrativeArea', name: area.name },
+    provider: { '@type': 'Organization', name: 'Rangel Designs Studio', email: 'hola@rangel.design' },
+    inLanguage: 'es-CL',
+  },
+  {
+    '@type': 'WebPage',
+    name: area.title,
+    description: area.description,
+    inLanguage: 'es-CL',
+  },
+];
+---
+<MainLayout title={area.metaTitle} description={area.description} schema={schema}>
+  <div id="top" class="site-shell">
+    <Header />
+    <main id="contenido">
+      <section class="service-hero local-area-hero section-pad">
+        <nav class="breadcrumbs" aria-label="Migas de pan">
+          <a href="/">Inicio</a><span aria-hidden="true">/</span>
+          <a href="/servicios/">Servicios</a><span aria-hidden="true">/</span>
+          <a href="/diseno-web-santiago/">Diseño web Santiago</a><span aria-hidden="true">/</span>
+          <span aria-current="page">{area.name}</span>
+        </nav>
+        <div class="local-area-hero-grid">
+          <div>
+            <p class="eyebrow"><span class="status-dot"></span> DISEÑO WEB / REGIÓN METROPOLITANA</p>
+            <h1>Diseño web en <span>{area.name}</span></h1>
+            <p class="service-intro">{area.intro}</p>
+            <div class="hero-actions">
+              <a class="button button-primary" href={`/contacto/?servicio=${encodeURIComponent(`Diseño web en ${area.name}`)}`}>Conversemos sobre tu proyecto <span aria-hidden="true">↗</span></a>
+              <a class="text-link" href="/precios/">Ver precios <span aria-hidden="true">↓</span></a>
+            </div>
+          </div>
+          <aside class="local-area-panel" aria-label={`Resumen del servicio en ${area.name}`}>
+            <span class="local-area-code">RDS / {area.name}</span>
+            <strong>WEB + SEO<br />+ CLARIDAD</strong>
+            <p>Proyectos para empresas y profesionales de {area.name}, con coordinación remota en la Región Metropolitana.</p>
+            <span>ESTRATEGIA · DISEÑO · CÓDIGO</span>
+          </aside>
+        </div>
+      </section>
+
+      <section class="local-area-context section-pad">
+        <div class="section-heading centered-heading">
+          <p class="eyebrow eyebrow-dark">CONTEXTO LOCAL</p>
+          <h2>{area.contextTitle}</h2>
+          <p class="section-intro">{area.context}</p>
+        </div>
+        <div class="outcome-grid">
+          {area.focus.map((item, index) => (
+            <article class="outcome-card">
+              <span>0{index + 1}</span>
+              <h3>{item.title}</h3>
+              <p>{item.text}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section class="local-services-section section-pad">
+        <div class="section-heading heading-split">
+          <div>
+            <p class="eyebrow eyebrow-dark">QUÉ PODEMOS CONSTRUIR</p>
+            <h2>Una web adaptada a tu negocio en {area.name}</h2>
+          </div>
+          <p class="section-intro">El alcance se define antes de empezar. No necesitas contratar todo: priorizamos lo que ayuda a explicar tu oferta y facilitar el contacto.</p>
+        </div>
+        <div class="local-service-list">
+          {area.services.map((service, index) => (
+            <a href={serviceLinks[index]?.href ?? '/diseno-web/'}>
+              <span>0{index + 1}</span>
+              <strong>{service}</strong>
+              <i aria-hidden="true">↗</i>
+            </a>
+          ))}
+        </div>
+      </section>
+
+      <section class="service-process section-pad">
+        <div class="section-heading">
+          <p class="eyebrow eyebrow-dark">CÓMO TRABAJAMOS</p>
+          <h2>Un proceso claro para proyectos en {area.name}</h2>
+        </div>
+        <div class="process-grid">
+          <a class="process-card" href="/contacto/"><span>01</span><h3>Contexto</h3><p>Revisamos negocio, objetivos, audiencia, servicios y situación digital actual.</p><span class="card-link-label">Hablemos <span aria-hidden="true">↗</span></span></a>
+          <a class="process-card" href="/diseno-web/"><span>02</span><h3>Estructura</h3><p>Definimos páginas, mensajes, jerarquía y siguiente paso antes de diseñar.</p><span class="card-link-label">Ver diseño web <span aria-hidden="true">↗</span></span></a>
+          <a class="process-card" href="/diseno-web-empresas/"><span>03</span><h3>Diseño y desarrollo</h3><p>Construimos una experiencia responsive, clara y alineada con la marca.</p><span class="card-link-label">Proyectos de empresa <span aria-hidden="true">↗</span></span></a>
+          <a class="process-card" href="/seo/"><span>04</span><h3>Medición y evolución</h3><p>Configuramos la base de medición y revisamos oportunidades de visibilidad.</p><span class="card-link-label">Ver SEO <span aria-hidden="true">↗</span></span></a>
+        </div>
+      </section>
+
+      <section class="local-area-coverage section-pad">
+        <div>
+          <p class="eyebrow eyebrow-dark">COBERTURA Y MODALIDAD</p>
+          <h2>Trabajamos con empresas de {area.name} sin inventar una oficina local.</h2>
+          <p>La coordinación principal es remota dentro de la Región Metropolitana. Si el proyecto requiere una instancia presencial, su viabilidad, lugar y condiciones se acuerdan antes de contratar. Para consultas de cercanía en Google Maps, la presencia depende de un Perfil de Empresa verificado y de la ubicación o zona de servicio real, no sólo de esta página.</p>
+        </div>
+        <a class="button button-ink" href="/seo-local/">Entender el SEO local <span aria-hidden="true">↗</span></a>
+      </section>
+
+      <section class="faq-section section-pad">
+        <div class="section-heading">
+          <p class="eyebrow eyebrow-dark">PREGUNTAS DE EMPRESAS EN {area.name.toUpperCase()}</p>
+          <h2>Antes de comenzar</h2>
+        </div>
+        <div class="faq-list">
+          {area.faqs.map((item) => (
+            <details>
+              <summary>{item.question}<span aria-hidden="true">＋</span></summary>
+              <p>{item.answer}</p>
+            </details>
+          ))}
+        </div>
+      </section>
+
+      {nearbyAreas.length > 0 && (
+        <section class="nearby-areas section-pad">
+          <div class="section-heading">
+            <p class="eyebrow eyebrow-dark">OTRAS ZONAS DE ATENCIÓN</p>
+            <h2>Proyectos en comunas cercanas</h2>
+          </div>
+          <div class="nearby-area-grid">
+            {nearbyAreas.map((nearby) => (
+              <a href={`/diseno-web-santiago/${nearby.slug}/`}>
+                <span>DISEÑO WEB</span>
+                <strong>{nearby.name}</strong>
+                <i aria-hidden="true">↗</i>
+              </a>
+            ))}
+            <a href="/diseno-web-santiago/">
+              <span>VER TODAS</span>
+              <strong>Diseño web en Santiago</strong>
+              <i aria-hidden="true">↗</i>
+            </a>
+          </div>
+        </section>
+      )}
+
+      <section class="contact-band section-pad">
+        <p class="eyebrow">¿TIENES UN PROYECTO EN {area.name.toUpperCase()}?</p>
+        <h2>Hagamos una web<br />que explique y capture.</h2>
+        <a class="button button-paper" href={`/contacto/?servicio=${encodeURIComponent(`Diseño web en ${area.name}`)}`}>Cuéntame tu proyecto <span aria-hidden="true">↗</span></a>
+        <span class="contact-spark" aria-hidden="true">✳</span>
+      </section>
+    </main>
+    <SiteFooter />
+  </div>
+</MainLayout>

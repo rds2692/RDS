@@ -44,4 +44,9 @@ const posts = allPosts.filter(({ data }) => data.category === 'SEO').slice(0, 2)
     { question: '¿Qué necesito para empezar?', answer: 'El dominio y accesos autorizados a Search Console u otras herramientas, si existen. Para una web que RDS no construyó, primero revisamos la plataforma y los riesgos.' },
   ]}
   posts={posts}
+  relatedLinks={[
+    { title: 'SEO local en Santiago', text: 'Trabaja la visibilidad de tu empresa en la Región Metropolitana con una base medible.', href: '/seo-local-santiago/' },
+    { title: 'Páginas locales por zona', text: 'Entiende la diferencia entre contenido local, distancia y Google Maps.', href: '/seo-local/' },
+    { title: 'Auditoría SEO', text: 'Revisa el estado técnico del sitio antes de contratar un plan mensual.', href: '/auditoria-seo/' },
+  ]}
 />

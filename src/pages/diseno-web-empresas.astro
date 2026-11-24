@@ -1,0 +1,55 @@
+---
+import { getCollection } from 'astro:content';
+import ServicePage from '../components/ServicePage.astro';
+import { WEB_PLANS } from '../data/pricing';
+
+const posts = (await getCollection('blog', ({ data }) => !data.draft))
+  .filter(({ data }) => data.category === 'Diseño web' || data.category === 'SEO')
+  .slice(0, 2);
+---
+<ServicePage
+  title="Diseño web para empresas"
+  metaTitle="Diseño Web para Empresas en Chile | RDS"
+  description="Diseñamos sitios corporativos que explican tus servicios, ordenan tu oferta y facilitan las consultas. Base SEO y desarrollo a medida. Conoce el proceso."
+  intro="Una web corporativa debe ordenar lo que la empresa hace, demostrar que puede hacerlo y facilitar que un cliente potencial encuentre el siguiente paso. En RDS conectamos estrategia, arquitectura, diseño, desarrollo y una base SEO inicial para construir una presencia digital que pueda crecer con el negocio."
+  serviceType="Diseño y desarrollo de sitios web corporativos"
+  tag="WEB CORPORATIVA / CHILE"
+  tone="violet"
+  outcomes={[
+    { title: 'Una oferta que se comprende', text: 'Organizamos los servicios según las necesidades del cliente y no según la estructura interna de la empresa.' },
+    { title: 'Una arquitectura preparada para crecer', text: 'Cada servicio importante puede tener su propia página, contenido y siguiente paso sin duplicar mensajes.' },
+    { title: 'Una experiencia que genera confianza', text: 'Trabajamos jerarquía, velocidad, comportamiento móvil, pruebas y formularios para reducir fricción antes del contacto.' },
+  ]}
+  deliverables={[
+    'Mapa del sitio y arquitectura de páginas',
+    'Diseño visual orientado a los objetivos comerciales',
+    'Páginas de servicio, empresa, casos y contacto',
+    'Desarrollo responsive para móvil, tablet y escritorio',
+    'Estructura SEO inicial, títulos, descripciones y encabezados',
+    'Enlazado interno entre servicios, contenidos y conversión',
+    'Datos estructurados según el tipo de empresa y el alcance',
+    'Search Console, Analytics 4 y revisión antes de publicar',
+  ]}
+  process={[
+    { title: 'Entender la empresa', text: 'Revisamos oferta, clientes, servicios, competencia, objetivos y activos digitales existentes.' },
+    { title: 'Definir la arquitectura', text: 'Ordenamos páginas, mensajes y recorridos antes de diseñar para evitar una web sin jerarquía.' },
+    { title: 'Diseñar y desarrollar', text: 'Construimos componentes visuales coherentes y una experiencia rápida en móvil y escritorio.' },
+    { title: 'Publicar y medir', text: 'Revisamos enlaces, formularios, metadatos, indexación y eventos antes de lanzar.' },
+  ]}
+  faqs={[
+    { question: '¿En qué se diferencia una web corporativa de una landing page?', answer: 'Una landing se concentra en una oferta o campaña. Una web corporativa explica varios servicios, la empresa, la forma de trabajo y las rutas de contacto. La elección depende del objetivo y del momento comercial.' },
+    { question: '¿Pueden reutilizar el contenido que ya tengo?', answer: 'Sí. Revisamos los textos, imágenes y activos disponibles. Cuando falta información clave, definimos quién debe aportarla y cómo se organizará dentro del proyecto.' },
+    { question: '¿El sitio incluye SEO?', answer: 'Incluye una base SEO inicial: estructura, metadatos, encabezados, enlaces internos y preparación para indexación. La estrategia y el posicionamiento continuo son un servicio separado.' },
+    { question: '¿Puedo publicar casos si todavía no tengo resultados?', answer: 'Sí. Un caso puede explicar contexto, decisiones y entregables sin inventar métricas. Los datos solo se publican cuando el cliente autoriza su uso y pueden verificarse.' },
+  ]}
+  posts={posts}
+  plans={WEB_PLANS}
+  pricingHeading="Planes de sitio web corporativo"
+  pricingIntro="Los paquetes se ajustan según páginas, contenidos, integraciones y funcionalidades. El alcance final queda por escrito."
+  note={{ title: '¿Ya tienes una web corporativa?', text: 'Antes de reconstruirla revisamos la plataforma, el contenido, las URLs y los riesgos. Así decidimos si conviene optimizar, rediseñar o migrar.', href: '/rediseno-web/', cta: 'Conocer el rediseño web' }}
+  relatedLinks={[
+    { title: 'Diseño web en Santiago', text: 'Conoce cómo trabajamos con empresas y pymes de la Región Metropolitana.', href: '/diseno-web-santiago/' },
+    { title: 'Rediseño de páginas web', text: 'Ordena una web existente antes de invertir en una reconstrucción completa.', href: '/rediseno-web/' },
+    { title: 'Precios y alcance', text: 'Revisa paquetes, entregables, condiciones y servicios complementarios.', href: '/precios/' },
+  ]}
+/>
