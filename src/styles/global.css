@@ -2626,10 +2626,20 @@ h2 span {
   margin-inline: auto;
 }
 
+.audit-strip .eyebrow,
+.service-note .eyebrow,
+.blog-prompt .eyebrow {
+  justify-content: center;
+}
+
 .protocol-band {
   grid-template-columns: 1fr;
   justify-items: center;
   text-align: center;
+}
+
+.protocol-band .eyebrow {
+  justify-content: center;
 }
 
 .protocol-band .text-link {
