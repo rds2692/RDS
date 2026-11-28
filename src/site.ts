@@ -3,11 +3,17 @@ export const FOUNDER_NAME = 'Armando Rangel';
 export const FOUNDER_JOB_TITLE = 'Fundador y responsable de proyectos';
 export const FOUNDER_PROFILE_PATH = '/autor/armando-rangel/';
 export const SITE_LAST_REVIEWED = '2026-11-28';
-// Conservado desde el sitio existente. Confirmar el correo antes de publicar.
-export const BUSINESS_EMAIL = 'hola@rangel.design';
-export const BUSINESS_PHONE = '';
-export const WHATSAPP_URL = '';
-export const SOCIAL_LINKS: { label: string; href: string }[] = [];
+export const BUSINESS_EMAIL = import.meta.env.PUBLIC_BUSINESS_EMAIL || 'hola@rangel.design';
+export const BUSINESS_PHONE = import.meta.env.PUBLIC_BUSINESS_PHONE || '';
+export const WHATSAPP_URL = import.meta.env.PUBLIC_WHATSAPP_URL || '';
+export const SOCIAL_LINKS: { label: string; href: string }[] = (import.meta.env.PUBLIC_SOCIAL_PROFILES || '')
+  .split(',')
+  .map((href: string) => href.trim())
+  .filter(Boolean)
+  .map((href: string) => ({
+    label: href.replace(/^https?:\/\/(?:www\.)?/, '').split('/')[0],
+    href,
+  }));
 export const SITE_DESCRIPTION = 'Diseño web y SEO local para pymes y profesionales de Santiago y Chile. Creamos sitios claros, rápidos y preparados para captar consultas.';
 export const SERVICE_AREA = 'Chile y Latinoamérica';
 

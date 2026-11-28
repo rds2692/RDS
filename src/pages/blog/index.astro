@@ -18,6 +18,15 @@ const categories = [
     <section class="blog-index section-pad"><div class="blog-index-top"><div class="category-pills">{categories.filter((category) => category.posts.length).map((category) => <a href={`#categoria-${category.id}`}>{category.label}</a>)}</div></div>
       {posts.length > 0 ? categories.filter((category) => category.posts.length).map((category) => <section class="blog-category" id={`categoria-${category.id}`}><div class="blog-category-title"><h2>{category.label}</h2></div><div class="blog-grid">{category.posts.map((post, index) => <BlogCard slug={post.id} title={post.data.title} description={post.data.description} category={post.data.category} publishDate={post.data.publishDate} readingTime={post.data.readingTime} tone={index % 3 === 1 ? 'lilac' : index % 3 === 2 ? 'yellow' : 'mint'} />)}</div></section>) : <div class="empty-blog"><span aria-hidden="true">✳</span><h2>El cuaderno está listo.</h2><p>Pronto encontrarás aquí nuevas guías y notas del estudio.</p></div>}
     </section>
+    <article class="article-page">
+      <div class="article-content">
+        <h2>Cómo usar el blog antes de contratar</h2>
+        <p>Las guías están ordenadas por el problema que ayudan a resolver. Diseño web reúne criterios de estructura, contenido y evaluación de una agencia. SEO explica cómo funcionan el rastreo, la indexación y la medición. SEO + IA trata las condiciones que una página necesita para ser útil en experiencias de respuesta generativa.</p>
+        <p>Si estás preparando un proyecto, empieza por la pregunta más concreta. Una página de servicio puede ayudarte a comparar alcance; un artículo puede aclarar una decisión antes de contactar. Los enlaces internos conectan ambos niveles para que no tengas que reconstruir el contexto.</p>
+        <p>El blog publica criterios, no promesas de ranking. Cada tema debe poder explicarse con fuentes, ejemplos o límites verificables. Cuando un artículo menciona una práctica técnica, conviene revisar si tu plataforma, equipo y objetivos permiten aplicarla.</p>
+        <p>Puedes revisar el <a href="/autor/armando-rangel/">perfil del autor</a>, las <a href="/preguntas-frecuentes/">preguntas frecuentes</a> y los <a href="/servicios/">servicios del estudio</a> para continuar por una ruta concreta.</p>
+      </div>
+    </article>
     <section class="blog-prompt section-pad"><div><h2>Las buenas preguntas merecen respuestas claras.</h2></div><a class="button button-ink" href="/contacto/">Cuéntame tu pregunta <span aria-hidden="true">↗</span></a></section>
   </main><SiteFooter /></div>
 </MainLayout>

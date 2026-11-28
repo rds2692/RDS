@@ -22,6 +22,22 @@ const plans = [AUDIT, IMPLEMENTATION];
   pricingHeading="Auditoría e implementación inicial"
   pricingIntro="La auditoría se paga antes de comenzar. La implementación es un trabajo separado y se define después del diagnóstico."
   note={{ title: 'Protocolo de protección', text: 'Antes de modificar, revisamos accesos autorizados, hosting, CMS y dependencias; verificamos una copia de seguridad, documentamos el estado inicial y acordamos el alcance. Los cambios se prueban y verifican cuando la plataforma lo permite.', href: '/contacto/', cta: 'Conversar sobre una auditoría' }}
+  detail={{
+    title: 'Qué responde una auditoría antes de tocar el sitio',
+    paragraphs: [
+      'La auditoría identifica qué páginas pueden rastrearse, qué URLs dependen de redirecciones, dónde existe contenido duplicado o insuficiente y qué problemas técnicos podrían afectar una intervención. El diagnóstico separa síntomas de causas y deja una prioridad comprensible.',
+      'También documenta límites. Un plugin desconocido, un acceso faltante o una funcionalidad crítica pueden exigir otra revisión. Esa incertidumbre se informa antes de convertirla en una corrección improvisada.',
+      'El resultado sirve para decidir si conviene optimizar, rediseñar o implementar cambios por etapas. La auditoría no promete una posición en Google ni autoriza modificaciones por sí sola.'
+    ],
+    items: [
+      { title: 'Inventario técnico', text: 'Plataforma, CMS, tema, plugins, hosting, dominios, certificados y dependencias conocidas dentro del alcance.' },
+      { title: 'Rastreo e indexación', text: 'Robots, canonicales, estados HTTP, sitemap, páginas huérfanas, redirecciones y contenido principal disponible para Google.' },
+      { title: 'Arquitectura y enlaces', text: 'Relación entre servicios, artículos, páginas locales y rutas de contacto. Detectamos duplicación y enlaces que no ayudan a decidir.' },
+      { title: 'Contenido y confianza', text: 'Claridad de la oferta, autoría, fuentes, información de contacto y coincidencia entre el texto visible y los datos estructurados.' },
+      { title: 'Rendimiento observable', text: 'Recursos pesados, fuentes, scripts e imágenes que pueden afectar LCP, INP o estabilidad visual. Los datos de campo se revisan cuando están disponibles.' },
+      { title: 'Plan de implementación', text: 'Los hallazgos se ordenan por impacto, dependencia y riesgo, con una estimación de alcance separada para cada bloque.' }
+    ]
+  }}
   process={[
     { title: 'Accesos y contexto', text: 'Recibimos el dominio y accesos autorizados; identificamos funcionalidades críticas.' },
     { title: 'Auditoría pagada', text: 'Revisamos las áreas acordadas y documentamos problemas, riesgos y prioridades.' },

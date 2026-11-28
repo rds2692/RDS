@@ -103,6 +103,10 @@ Dos URLs compiten cuando intentan responder la misma intención con contenido in
 
 Define una URL principal para cada tema. Las demás deben aportar una diferencia clara: público, alcance, ubicación o etapa de decisión. Si no pueden justificarla, no las crees.
 
+Una revisión de arquitectura puede ordenar ese mapa antes de escribir más contenido. Si dos URLs tienen títulos, encabezados y ejemplos casi iguales, el problema no se corrige publicando una tercera página. Conviene decidir cuál conserva la intención principal, cuál se convierte en recurso de apoyo y cuál debe redirigirse.
+
+Esa decisión necesita ejemplos del sitio real, no una lista abstracta de temas.
+
 ## Errores frecuentes en un plan SEO
 
 - Prometer una posición concreta.

@@ -163,4 +163,4 @@ Una propuesta económica puede ser válida cuando reduce alcance de forma explí
 
 Por ejemplo, ahorrar en estructura puede obligar a rehacer las páginas cuando el negocio agrega servicios. Ahorrar en contenido puede dejar una web visualmente correcta que no explica la oferta. Ahorrar en pruebas puede producir formularios defectuosos o problemas de indexación después del lanzamiento.
 
-La comparación útil no es “cuánto cuesta una página”, sino “qué debe lograr esta página y qué trabajo mínimo se necesita para conseguirlo con un riesgo aceptable”. Esa respuesta permite negociar alcance con criterio y no sólo rebajar una cifra.
+Una comparación útil parte de “qué debe lograr esta página y qué trabajo mínimo se necesita para conseguirlo con un riesgo aceptable”. Esa respuesta permite negociar alcance con criterio y no sólo rebajar una cifra.

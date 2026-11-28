@@ -18,7 +18,8 @@ const related = allPosts.filter((item) => item.id !== post.id && item.data.categ
 const datePublished = post.data.publishDate.toISOString().slice(0, 10);
 const dateModified = post.data.updatedDate?.toISOString().slice(0, 10);
 const description = post.data.description;
-const image = Astro.site ? new URL('/social-card.png', Astro.site).href : '/social-card.png';
+const imagePath = `/og/blog-${post.id}.png`;
+const image = Astro.site ? new URL(imagePath, Astro.site).href : imagePath;
 const schema = {
   '@type': 'BlogPosting',
   headline: post.data.title,
@@ -43,7 +44,7 @@ const schema = {
 };
 const dateText = new Intl.DateTimeFormat('es-CL', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' }).format(post.data.publishDate);
 ---
-<MainLayout title={post.data.metaTitle ?? `${post.data.title} | RDS`} description={description} type="article" publishedTime={datePublished} modifiedTime={dateModified} imageAlt={post.data.title} schema={schema}>
+<MainLayout title={post.data.metaTitle ?? `${post.data.title} | RDS`} description={description} type="article" publishedTime={datePublished} modifiedTime={dateModified} breadcrumbLabel={post.data.title} imageAlt={post.data.title} schema={schema}>
   <div id="top" class="site-shell"><Header /><main id="contenido">
     <article class="article-page">
       <header class="article-header section-pad"><nav class="breadcrumbs" aria-label="Migas de pan"><a href="/">Inicio</a><span>/</span><a href="/blog/">Ideas</a><span>/</span><span aria-current="page">{post.data.title}</span></nav><h1>{post.data.title}</h1><p class="article-dek">{post.data.description}</p><div class="article-byline"><a href={FOUNDER_PROFILE_PATH}>POR {FOUNDER_NAME.toUpperCase()}</a><span>{dateText}</span><span>{post.data.readingTime} min de lectura</span></div></header>

@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build && node scripts/generate-seo-files.mjs",
+    "og": "node scripts/generate-og-cards.mjs",
     "preview": "astro preview"
   },
   "dependencies": {

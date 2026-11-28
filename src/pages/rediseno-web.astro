@@ -43,6 +43,22 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft))
   ]}
   posts={posts}
   note={{ title: '¿No sabes si necesitas rediseño?', text: 'Una auditoría independiente permite revisar plataforma, arquitectura, indexación, contenido y riesgos antes de decidir el alcance.', href: '/auditoria-seo/', cta: 'Ver auditoría SEO' }}
+  detail={{
+    title: 'Qué se conserva y qué se cambia en un rediseño',
+    paragraphs: [
+      'Un rediseño útil conserva las URLs que atraen tráfico, la información que responde a clientes y los elementos técnicos que sostienen la medición. La nueva interfaz se construye alrededor de esas decisiones, no sobre una plantilla aplicada sin inventario.',
+      'Antes de publicar se documenta qué URL cambia, qué redirección necesita y qué página equivalente recibe su tráfico. También se revisan canonicales, enlaces internos, formularios y eventos de conversión.',
+      'La migración puede afectar posiciones aunque se planifique con cuidado. El objetivo es reducir riesgos evitables y poder comparar el estado previo con el posterior.'
+    ],
+    items: [
+      { title: 'Mapa de URLs', text: 'Inventario de páginas relevantes, destinos nuevos y redirecciones permanentes. Las URLs que permanecen no deben redirigirse sin motivo.' },
+      { title: 'Contenido preservado', text: 'Identificamos textos, preguntas y datos que cumplen una función comercial. Lo que se elimina debe tener una razón, no solo una preferencia visual.' },
+      { title: 'Arquitectura nueva', text: 'Los servicios, la empresa, los proyectos y el contacto se organizan según las decisiones del visitante y la capacidad del negocio.' },
+      { title: 'Puntos de conversión', text: 'Formularios, llamadas y canales de contacto se prueban antes y después del lanzamiento para no perder una ruta de consulta.' },
+      { title: 'Comprobación móvil', text: 'Menús, lectura, tablas, imágenes y botones se revisan en pantallas pequeñas, donde el contenido principal debe seguir disponible.' },
+      { title: 'Comparación posterior', text: 'Search Console, analítica y búsqueda de marca permiten observar qué cambió. La fecha de lanzamiento se conserva para interpretar la tendencia.' }
+    ]
+  }}
   relatedLinks={[
     { title: 'Diseño y desarrollo web', text: 'Revisa el proceso completo para crear un sitio nuevo desde cero.', href: '/diseno-web/' },
     { title: 'Diseño web en Santiago', text: 'Explora la cobertura para empresas de la Región Metropolitana.', href: '/diseno-web-santiago/' },

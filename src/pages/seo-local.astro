@@ -23,5 +23,13 @@ const description = 'SEO local para las zonas donde tu empresa presta servicios.
     <section class="service-pricing local-pricing section-pad"><div class="section-heading"><h2>Paquetes por cantidad.</h2><p class="section-intro">Precios en CLP. Cada localidad debe corresponder a una zona atendida por el negocio y aportar información útil.</p></div><div class="local-price-grid">{localPlans.map((plan, index) => <PriceCard plan={plan} tone={index % 2 ? 'orange' : 'lilac'} compact={true} />)}</div></section>
     <section class="service-pricing local-monthly section-pad"><div class="section-heading"><h2>Si también quieres trabajo continuo.</h2><p class="section-intro">Los planes mensuales se contratan aparte. Local Presence es el plan de entrada para una ubicación principal.</p></div><div class="pricing-grid">{MONTHLY_PLANS.map((plan, index) => <PriceCard plan={plan} tone={index === 1 ? 'orange' : index === 2 ? 'mint' : 'lilac'} compact={true} />)}</div></section>
     <section class="local-quality section-pad"><h2>No generamos páginas solo para cambiar el nombre de la comuna.</h2><p>Una zona se trabaja cuando la empresa realmente presta servicios allí y se puede publicar información diferenciada. La cantidad final depende de la cobertura efectiva y de la calidad posible del contenido.</p><a class="button button-paper" href="/contacto/">Revisar mi cobertura <span aria-hidden="true">↗</span></a></section>
+    <article class="article-page">
+      <div class="article-content">
+        <h2>Qué debe resolver una página local</h2>
+        <p>Una página de comuna debe responder qué servicio se ofrece, cómo se atiende esa zona y qué información puede verificarse. Si solo cambia el nombre de la localidad, no aporta contexto suficiente para una persona ni justifica otra URL.</p>
+        <p>La cobertura se define con el cliente. Una oficina, una zona de desplazamiento y un servicio remoto producen expectativas distintas. Para Maps importan la ubicación real, el Perfil de Empresa y las reseñas; una página no crea cercanía física.</p>
+        <p>El trabajo puede incluir arquitectura, contenido, enlaces internos, títulos y una forma de medir consultas locales. No garantiza posiciones ni una cantidad de clientes.</p>
+      </div>
+    </article>
   </main><SiteFooter /></div>
 </MainLayout>

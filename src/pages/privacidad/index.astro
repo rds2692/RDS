@@ -26,7 +26,8 @@ const schema = { '@type': 'WebPage', name: 'Privacidad y tratamiento de datos', 
         <h2>Tus solicitudes</h2>
         <p>Puedes pedir información sobre los datos asociados a tu consulta, solicitar una corrección o pedir su eliminación escribiendo a <a href={`mailto:${BUSINESS_EMAIL}`}>{BUSINESS_EMAIL}</a>. Incluye el correo desde el que enviaste el mensaje para poder identificar la conversación.</p>
         <h2>Analítica y servicios externos</h2>
-        <p>La versión actual del sitio no incorpora herramientas de analítica en el código. Si se activan servicios de medición, esta página debe actualizarse antes de publicarlos y explicar qué datos recogen y cómo se pueden limitar.</p>
+        <p>La analítica está desactivada mientras no se configure un identificador público de Google Analytics 4 en el entorno de compilación. Si se activa, Google recibe datos de uso y navegación técnica para elaborar informes agregados. La instalación debe revisar cookies, retención y consentimiento antes de publicarse.</p>
+        <p>El formulario envía un evento técnico llamado <code>contact_mailto_opened</code> cuando prepara el correo. Ese evento no confirma que el mensaje haya sido enviado ni incluye el contenido del formulario.</p>
         <h2>Cambios en esta política</h2>
         <p>La política se revisará cuando cambie el formulario, el hosting, la analítica o la forma de gestionar consultas. Para asuntos comerciales, consulta también las <a href="/condiciones/">condiciones de contratación</a>.</p>
       </div>

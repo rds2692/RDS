@@ -127,7 +127,7 @@ Estos enlaces ayudan a personas y buscadores, pero no garantizan una posición. 
 
 ## ¿Cómo medir si la web genera consultas?
 
-La primera señal no es el número de visitas. Es la capacidad de identificar qué páginas reciben impresiones, qué consultas activan esas impresiones y qué recorridos terminan en contacto.
+La primera señal es la capacidad de identificar qué páginas reciben impresiones, qué consultas activan esas impresiones y qué recorridos terminan en contacto.
 
 Search Console muestra consultas, clics, páginas y problemas de indexación. Una herramienta de analítica puede medir formularios, llamadas o descargas si se configuran eventos que representen acciones reales. Sin medición, una mejora de diseño y una mejora de captación parecen lo mismo.
 

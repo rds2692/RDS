@@ -112,13 +112,17 @@ Un brief útil incluye:
 6. Enlaces internos hacia servicios e información relacionada.
 7. Fecha de revisión y responsable.
 
-El objetivo no es escribir para un algoritmo específico. Es reducir ambigüedad y dejar evidencia que una persona pueda comprobar. Un contenido con esas propiedades también responde mejor a una búsqueda tradicional.
+El objetivo es reducir ambigüedad y dejar evidencia que una persona pueda comprobar. Un contenido con esas propiedades también responde mejor a una búsqueda tradicional.
 
 ## Qué no conviene prometer
 
 No se puede prometer aparición en AI Overviews, recomendación de ChatGPT, cita de Perplexity ni prioridad en un asistente sin conocer el funcionamiento de cada producto. Tampoco conviene publicar afirmaciones sobre una empresa que la propia empresa no puede respaldar.
 
 La [página de precios y condiciones](/precios/) explica cómo se separa el trabajo de visibilidad de otros servicios. El [blog](/blog/) incluye guías relacionadas sobre SEO, diseño y contenido para profundizar antes de contratar.
+
+La revisión también debe distinguir una página ausente de una consulta sin demanda. Antes de crear contenido nuevo, comprueba en Search Console si existen impresiones relacionadas, si otra URL ya responde esa intención y si el negocio puede aportar información original. Esa comprobación evita llenar el sitio con variantes que no ayudan a ninguna persona.
+
+Si una URL recibe impresiones con una intención distinta, puede necesitar un ajuste de título, una respuesta mejor alineada o una página separada. El dato de Search Console indica que alguien vio la página en resultados, pero no garantiza que el contenido actual resuelva su pregunta.
 
 ## ¿Schema o llms.txt garantizan que una IA cite mi web?
 

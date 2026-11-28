@@ -3,7 +3,7 @@ import Header from '../../../components/Header.astro';
 import SiteFooter from '../../../components/SiteFooter.astro';
 import CharacterPortrait from '../../../components/CharacterPortrait.astro';
 import MainLayout from '../../../layouts/MainLayout.astro';
-import { BUSINESS_EMAIL, FOUNDER_JOB_TITLE, FOUNDER_NAME, FOUNDER_PROFILE_PATH, SITE_NAME } from '../../../site';
+import { BUSINESS_EMAIL, FOUNDER_JOB_TITLE, FOUNDER_NAME, FOUNDER_PROFILE_PATH, SITE_NAME, SOCIAL_LINKS } from '../../../site';
 
 const description = 'Perfil profesional de Armando Rangel, fundador de Rangel Designs Studio. Conoce su enfoque de trabajo en diseño web, desarrollo y SEO.';
 const profileUrl = Astro.site ? new URL(FOUNDER_PROFILE_PATH, Astro.site).href : FOUNDER_PROFILE_PATH;
@@ -91,6 +91,12 @@ const schema = [
           <h2>Experiencia profesional verificable</h2>
           <p>Los artículos firmados por {FOUNDER_NAME} expresan el enfoque editorial y técnico de RDS. Cada afirmación que dependa de documentación externa debe enlazar a una fuente identificable. Los resultados de clientes solo se publican con autorización y contexto.</p>
           <p>Si necesitas conocer la experiencia específica para tu sector, solicita una conversación y pide los antecedentes que sean relevantes. También puedes revisar los <a href="/servicios/">servicios del estudio</a>, los <a href="/proyectos/">criterios de publicación de proyectos</a> y las <a href="/preguntas-frecuentes/">respuestas sobre alcance, acceso y propiedad del sitio</a>.</p>
+          <p>El perfil no atribuye certificaciones, años de experiencia ni resultados que no estén documentados en el sitio. Cuando esos antecedentes existan y puedan publicarse, se incorporarán con fuente y fecha. Hasta entonces, la evaluación profesional debe apoyarse en conversaciones, referencias solicitadas y el alcance concreto de la propuesta.</p>
+          {SOCIAL_LINKS.length > 0 && <>
+            <h2>Perfiles públicos</h2>
+            <p>Estas cuentas permiten comprobar actividad profesional fuera de RDS. Los enlaces se muestran únicamente cuando están configurados como perfiles públicos del autor.</p>
+            <ul>{SOCIAL_LINKS.map((profile) => <li><a href={profile.href} rel="me">{profile.label}</a></li>)}</ul>
+          </>}
           <h2>Contacto profesional</h2>
           <p>Puedes escribir a <a href={`mailto:${BUSINESS_EMAIL}`}>{BUSINESS_EMAIL}</a> o preparar una consulta desde la <a href="/contacto/">página de contacto</a>. En el mensaje conviene indicar qué hace el negocio, qué necesita resolver y si ya existe una web.</p>
         </div>

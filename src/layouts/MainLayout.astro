@@ -19,6 +19,7 @@ interface Props {
   schema?: Record<string, unknown> | Array<Record<string, unknown>>;
   publishedTime?: string;
   modifiedTime?: string;
+  breadcrumbLabel?: string;
   imageAlt?: string;
   noindex?: boolean;
   includeOrganization?: boolean;
@@ -27,19 +28,25 @@ interface Props {
 const {
   title,
   description,
-  image = '/social-card.png',
+  image,
   type = 'website',
   schema = [],
   publishedTime,
   modifiedTime = SITE_LAST_REVIEWED,
-  imageAlt = `${SITE_NAME}: diseño web y SEO`,
+  breadcrumbLabel,
+  imageAlt = `${title}: ${SITE_NAME}`,
   noindex = false,
   includeOrganization = true,
 } = Astro.props;
 const siteUrl = Astro.site?.href.replace(/\/$/, '');
 const canonical = siteUrl ? new URL(Astro.url.pathname, `${siteUrl}/`).href : undefined;
 const googleSiteVerification = import.meta.env.PUBLIC_GOOGLE_SITE_VERIFICATION;
+const gaMeasurementId = import.meta.env.PUBLIC_GA_MEASUREMENT_ID;
 const pathParts = Astro.url.pathname.split('/').filter(Boolean);
+const socialImageSlug = pathParts.length > 0 && pathParts[0] !== '404.html'
+  ? pathParts.join('-')
+  : 'home';
+const socialImage = image ?? `/og/${socialImageSlug}.png`;
 const routeLabels: Record<string, string> = {
   'servicios': 'Servicios',
   'diseno-web': 'Diseño y desarrollo web',
@@ -60,9 +67,9 @@ const routeLabels: Record<string, string> = {
   'autor': 'Autor',
   'armando-rangel': 'Armando Rangel',
   'privacidad': 'Privacidad',
-  'condiciones': 'Condiciones comerciales',
+  'condiciones': 'Condiciones',
 };
-const pageLabel = title.split(' | ')[0];
+const pageLabel = breadcrumbLabel ?? title.split(' | ')[0];
 const breadcrumbItems = pathParts.map((part, index) => {
   const localArea = pathParts[index - 1] === 'diseno-web-santiago' ? getLocalArea(part) : undefined;
   const isArticle = pathParts[0] === 'blog' && index === 1;
@@ -76,7 +83,7 @@ const isServiceRoute = serviceRoutes.has(pathParts[0]);
 if (isServiceRoute && !breadcrumbItems.some((item) => item.name === 'Servicios')) {
   breadcrumbItems.unshift({ name: 'Servicios', path: '/servicios/' });
 }
-const breadcrumbSchema = Astro.url.pathname === '/' ? [] : [{
+const breadcrumbSchema = Astro.url.pathname === '/' || noindex ? [] : [{
   '@type': 'BreadcrumbList',
   itemListElement: [
     {
@@ -100,6 +107,7 @@ const pageSchemas = (Array.isArray(schema) ? schema : [schema]).map((item) => ({
 }));
 const organizationId = siteUrl ? `${siteUrl}/#organization` : '/#organization';
 const personId = siteUrl ? `${siteUrl}/#${FOUNDER_NAME.toLowerCase().replaceAll(' ', '-')}` : `/#${FOUNDER_NAME.toLowerCase().replaceAll(' ', '-')}`;
+const founderImage = siteUrl ? new URL('/images/armando/expresion-07.webp', siteUrl).href : '/images/armando/expresion-07.webp';
 const personSchema = {
   '@context': 'https://schema.org',
   '@type': 'Person',
@@ -107,6 +115,7 @@ const personSchema = {
   name: FOUNDER_NAME,
   jobTitle: FOUNDER_JOB_TITLE,
   url: siteUrl ? new URL(FOUNDER_PROFILE_PATH, `${siteUrl}/`).href : FOUNDER_PROFILE_PATH,
+  image: founderImage,
   worksFor: { '@id': organizationId },
   knowsAbout: ['Diseño web', 'Desarrollo web', 'SEO', 'Contenido web', 'SEO local', 'GEO y AEO'],
   ...(SOCIAL_LINKS.length > 0 ? { sameAs: SOCIAL_LINKS.map((item) => item.href) } : {}),
@@ -152,7 +161,7 @@ const jsonLd = [
   ...breadcrumbSchema,
   ...pageSchemas,
 ].filter(Boolean).map((item) => JSON.stringify(item).replace(/</g, '\\u003c'));
-const absoluteImage = siteUrl ? new URL(image, `${siteUrl}/`).href : undefined;
+const absoluteImage = siteUrl ? new URL(socialImage, `${siteUrl}/`).href : undefined;
 ---
 <!doctype html>
 <html lang="es-CL">
@@ -187,6 +196,15 @@ const absoluteImage = siteUrl ? new URL(image, `${siteUrl}/`).href : undefined;
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>{title}</title>
     {jsonLd.map((item) => <script type="application/ld+json" set:html={item} />)}
+    {gaMeasurementId && <>
+      <script async src={`https://www.googletagmanager.com/gtag/js?id=${gaMeasurementId}`}></script>
+      <script define:vars={{ gaMeasurementId }}>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(...args) { window.dataLayer.push(args); }
+        gtag('js', new Date());
+        gtag('config', gaMeasurementId);
+      </script>
+    </>}
   </head>
   <body>
     <slot />
