@@ -1,0 +1,37 @@
+---
+import Header from '../../components/Header.astro';
+import SiteFooter from '../../components/SiteFooter.astro';
+import MainLayout from '../../layouts/MainLayout.astro';
+import { BUSINESS_EMAIL } from '../../site';
+import { LOCAL_PAGE_PACKS, WEB_PLANS, formatCLP } from '../../data/pricing';
+
+const description = 'Condiciones comerciales de RDS: alcance, pagos, entregables, terceros y límites de diseño web, auditoría, implementación y SEO.';
+const schema = { '@type': 'WebPage', name: 'Condiciones comerciales de Rangel Designs Studio', description, inLanguage: 'es-CL' };
+---
+<MainLayout title="Condiciones comerciales de diseño web y SEO | RDS" description={description} schema={schema}>
+  <div id="top" class="site-shell"><Header /><main id="contenido">
+    <article class="article-page">
+      <header class="article-header section-pad">
+        <nav class="breadcrumbs" aria-label="Migas de pan"><a href="/">Inicio</a><span aria-hidden="true">/</span><span aria-current="page">Condiciones</span></nav>
+        <h1>Alcance escrito.<br /><span>Reglas claras.</span></h1>
+        <p class="article-dek">Estas condiciones resumen cómo se cotiza, aprueba y ejecuta un proyecto. La propuesta firmada o aceptada por escrito prevalece sobre las referencias generales de esta página.</p>
+      </header>
+      <div class="article-content">
+        <h2>Qué incluye una propuesta</h2>
+        <p>Cada propuesta identifica páginas, secciones, funcionalidades, contenidos, revisiones, entregables y exclusiones. El precio publicado es un punto de partida para el alcance indicado en cada paquete.</p>
+        <p>Los proyectos web actuales comienzan en {formatCLP(WEB_PLANS[0].amount)} para una landing page, {formatCLP(WEB_PLANS[1].amount)} para un sitio corporativo de hasta seis páginas y {formatCLP(WEB_PLANS[2].amount)} para una estructura de hasta diez páginas. Las páginas locales adicionales comienzan en {formatCLP(LOCAL_PAGE_PACKS[0].amount)} por una página y se cotizan por cantidad y complejidad.</p>
+        <h2>Pagos y aprobaciones</h2>
+        <p>Los desarrollos web se pagan 50% al inicio y 50% antes de publicar. Las auditorías se pagan antes de comenzar. Las implementaciones se cotizan después de revisar el sitio y se aprueban antes de modificar cualquier archivo. Los planes mensuales se pagan por adelantado.</p>
+        <p>El cliente entrega contenidos, accesos y aprobaciones necesarios. El calendario puede cambiar si faltan materiales o si se agrega trabajo que no estaba en la propuesta.</p>
+        <h2>Cambios de alcance</h2>
+        <p>Páginas adicionales, migraciones, integraciones especiales, redacciones extensas, campañas y campañas de enlaces se presupuestan por separado. Un cambio no se considera incluido hasta que exista una cotización o actualización escrita aceptada por ambas partes.</p>
+        <h2>Dominio, hosting y terceros</h2>
+        <p>El dominio, hosting, licencias, herramientas de analítica y servicios externos se contratan aparte, salvo que una propuesta indique lo contrario. El cliente debe conocer quién controla cada cuenta y qué ocurre si decide cambiar de proveedor.</p>
+        <h2>SEO y resultados</h2>
+        <p>El trabajo SEO puede mejorar rastreo, estructura, contenido y medición. Ningún servicio garantiza una posición, una cantidad de tráfico, una cita en una plataforma de IA ni un número de consultas. Los resultados dependen del mercado, la competencia, la implementación y otros factores externos.</p>
+        <h2>Soporte y propiedad</h2>
+        <p>El soporte posterior, las actualizaciones y las nuevas funcionalidades se definen en la propuesta. La titularidad del dominio, infraestructura, cuentas y herramientas debe quedar acordada por escrito. Para consultar una condición específica antes de contratar, escribe a <a href={`mailto:${BUSINESS_EMAIL}`}>{BUSINESS_EMAIL}</a>.</p>
+      </div>
+    </article>
+  </main><SiteFooter /></div>
+</MainLayout>

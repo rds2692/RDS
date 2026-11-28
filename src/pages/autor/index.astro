@@ -1,0 +1,29 @@
+---
+import Header from '../../components/Header.astro';
+import SiteFooter from '../../components/SiteFooter.astro';
+import MainLayout from '../../layouts/MainLayout.astro';
+import { FOUNDER_NAME, FOUNDER_PROFILE_PATH } from '../../site';
+
+const description = 'Autor de las guías de Rangel Designs Studio. Consulta el perfil profesional de Armando Rangel y su enfoque sobre diseño web, SEO y contenido.';
+---
+<MainLayout
+  title="Autor de las guías | Rangel Designs Studio"
+  description={description}
+  schema={{ '@type': 'CollectionPage', name: 'Autor de Rangel Designs Studio', description, inLanguage: 'es-CL' }}
+>
+  <div id="top" class="site-shell"><Header /><main id="contenido">
+    <section class="directory-hero section-pad">
+      <nav class="breadcrumbs" aria-label="Migas de pan"><a href="/">Inicio</a><span aria-hidden="true">/</span><span aria-current="page">Autor</span></nav>
+      <h1>Quién escribe<br /><span>las guías.</span></h1>
+      <p class="directory-intro">El blog de RDS publica contenido firmado y revisado desde el estudio. Puedes consultar el perfil profesional del autor antes de usar una recomendación.</p>
+    </section>
+    <section class="related-links-section section-pad">
+      <div class="section-heading"><h2>Perfil del autor</h2></div>
+      <div class="related-link-grid">
+        <a href={FOUNDER_PROFILE_PATH}><h3>{FOUNDER_NAME}</h3><p>Fundador de Rangel Designs Studio. Conoce su función, criterios de trabajo y enfoque editorial.</p><strong>Ver perfil <span aria-hidden="true">↗</span></strong></a>
+        <a href="/blog/"><h3>Guías del estudio</h3><p>Artículos sobre diseño web, precios, SEO y búsquedas con inteligencia artificial.</p><strong>Explorar artículos <span aria-hidden="true">↗</span></strong></a>
+        <a href="/estudio/"><h3>El estudio</h3><p>Servicios, proceso y límites de Rangel Designs Studio.</p><strong>Conocer el estudio <span aria-hidden="true">↗</span></strong></a>
+      </div>
+    </section>
+  </main><SiteFooter /></div>
+</MainLayout>

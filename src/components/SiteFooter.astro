@@ -1,5 +1,5 @@
 ---
-import { BUSINESS_EMAIL, NAV_ITEMS, SERVICES, SITE_NAME } from '../site';
+import { BUSINESS_EMAIL, FOUNDER_PROFILE_PATH, NAV_ITEMS, SERVICES, SITE_NAME } from '../site';
 const year = new Date().getFullYear();
 ---
 <footer class="site-footer">
@@ -12,10 +12,10 @@ const year = new Date().getFullYear();
       <p>Ideas claras. Diseño con carácter.<br />Una web que sabe a dónde va.</p>
     </div>
     <div class="footer-links">
-      <div><h2>Explora</h2>{NAV_ITEMS.map((item) => <a href={item.href}>{item.label}</a>)}<a href="/contacto/">Contacto</a></div>
+      <div><h2>Explora</h2>{NAV_ITEMS.map((item) => <a href={item.href}>{item.label}</a>)}<a href="/contacto/">Contacto</a><a href={FOUNDER_PROFILE_PATH}>Sobre Armando</a></div>
       <div><h2>Servicios</h2>{SERVICES.map((service) => <a href={service.slug}>{service.shortTitle}</a>)}<a href="/diseno-web-empresas/">Web para empresas</a><a href="/rediseno-web/">Rediseño web</a><a href="/diseno-web-santiago/">Diseño web en Santiago</a><a href="/seo-local-santiago/">SEO local Santiago</a></div>
       <div class="footer-contact"><h2>¿Tienes una idea?</h2><a class="footer-email" href={`mailto:${BUSINESS_EMAIL}`}>{BUSINESS_EMAIL} ↗</a><a href="/contacto/">Cuéntame tu proyecto</a></div>
     </div>
   </div>
-  <div class="footer-bottom"><span>© {year} RANGEL DESIGNS STUDIO</span><a href="#top">Volver arriba ↑</a><span>DISEÑO · SEO · IA</span></div>
+  <div class="footer-bottom"><span>© {year} RANGEL DESIGNS STUDIO</span><a href="/privacidad/">Privacidad</a><a href="/condiciones/">Condiciones</a><a href="#top">Volver arriba ↑</a><span>DISEÑO · SEO · IA</span></div>
 </footer>

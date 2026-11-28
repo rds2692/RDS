@@ -1,6 +1,14 @@
 ---
 import '../styles/global.css';
-import { BUSINESS_EMAIL, SITE_DESCRIPTION, SITE_NAME } from '../site';
+import {
+  BUSINESS_EMAIL,
+  FOUNDER_JOB_TITLE,
+  FOUNDER_NAME,
+  FOUNDER_PROFILE_PATH,
+  SITE_LAST_REVIEWED,
+  SITE_NAME,
+  SOCIAL_LINKS,
+} from '../site';
 import { getLocalArea, LOCAL_AREAS } from '../data/local-areas';
 
 interface Props {
@@ -10,30 +18,49 @@ interface Props {
   type?: 'website' | 'article';
   schema?: Record<string, unknown> | Array<Record<string, unknown>>;
   publishedTime?: string;
+  modifiedTime?: string;
+  imageAlt?: string;
+  noindex?: boolean;
   includeOrganization?: boolean;
 }
 
-const { title, description, image = '/social-card.png', type = 'website', schema = [], publishedTime } = Astro.props;
+const {
+  title,
+  description,
+  image = '/social-card.png',
+  type = 'website',
+  schema = [],
+  publishedTime,
+  modifiedTime = SITE_LAST_REVIEWED,
+  imageAlt = `${SITE_NAME}: diseño web y SEO`,
+  noindex = false,
+  includeOrganization = true,
+} = Astro.props;
 const siteUrl = Astro.site?.href.replace(/\/$/, '');
 const canonical = siteUrl ? new URL(Astro.url.pathname, `${siteUrl}/`).href : undefined;
+const googleSiteVerification = import.meta.env.PUBLIC_GOOGLE_SITE_VERIFICATION;
 const pathParts = Astro.url.pathname.split('/').filter(Boolean);
 const routeLabels: Record<string, string> = {
   'servicios': 'Servicios',
-  'diseno-web': 'Diseño web',
+  'diseno-web': 'Diseño y desarrollo web',
   'diseno-web-empresas': 'Diseño web para empresas',
   'diseno-web-santiago': 'Diseño web en Santiago',
-  'rediseno-web': 'Rediseño web',
-  'seo': 'Posicionamiento SEO',
+  'rediseno-web': 'Rediseño de páginas web',
+  'seo': 'Posicionamiento SEO mensual',
   'seo-local': 'SEO local',
   'seo-local-santiago': 'SEO local en Santiago',
-  'auditoria-seo': 'Auditoría SEO',
-  'seo-ia': 'GEO y AEO',
+  'auditoria-seo': 'Auditoría técnica y SEO de sitios existentes',
+  'seo-ia': 'GEO y AEO: claridad para búsquedas con IA',
   'precios': 'Precios',
   'proyectos': 'Proyectos',
   'blog': 'Ideas',
   'preguntas-frecuentes': 'Preguntas frecuentes',
   'estudio': 'Estudio',
   'contacto': 'Contacto',
+  'autor': 'Autor',
+  'armando-rangel': 'Armando Rangel',
+  'privacidad': 'Privacidad',
+  'condiciones': 'Condiciones comerciales',
 };
 const pageLabel = title.split(' | ')[0];
 const breadcrumbItems = pathParts.map((part, index) => {
@@ -44,8 +71,9 @@ const breadcrumbItems = pathParts.map((part, index) => {
     path: `/${pathParts.slice(0, index + 1).join('/')}/`,
   };
 });
-const serviceBreadcrumbPaths = new Set(['/diseno-web/', '/diseno-web-empresas/', '/rediseno-web/', '/seo/', '/seo-local/', '/seo-local-santiago/', '/auditoria-seo/', '/seo-ia/', '/diseno-web-santiago/']);
-if (serviceBreadcrumbPaths.has(Astro.url.pathname) && !breadcrumbItems.some((item) => item.name === 'Servicios')) {
+const serviceRoutes = new Set(['diseno-web', 'diseno-web-empresas', 'rediseno-web', 'seo', 'seo-local', 'seo-local-santiago', 'auditoria-seo', 'seo-ia', 'diseno-web-santiago']);
+const isServiceRoute = serviceRoutes.has(pathParts[0]);
+if (isServiceRoute && !breadcrumbItems.some((item) => item.name === 'Servicios')) {
   breadcrumbItems.unshift({ name: 'Servicios', path: '/servicios/' });
 }
 const breadcrumbSchema = Astro.url.pathname === '/' ? [] : [{
@@ -71,7 +99,19 @@ const pageSchemas = (Array.isArray(schema) ? schema : [schema]).map((item) => ({
   ...item,
 }));
 const organizationId = siteUrl ? `${siteUrl}/#organization` : '/#organization';
-const organizationSchema = [{
+const personId = siteUrl ? `${siteUrl}/#${FOUNDER_NAME.toLowerCase().replaceAll(' ', '-')}` : `/#${FOUNDER_NAME.toLowerCase().replaceAll(' ', '-')}`;
+const personSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  '@id': personId,
+  name: FOUNDER_NAME,
+  jobTitle: FOUNDER_JOB_TITLE,
+  url: siteUrl ? new URL(FOUNDER_PROFILE_PATH, `${siteUrl}/`).href : FOUNDER_PROFILE_PATH,
+  worksFor: { '@id': organizationId },
+  knowsAbout: ['Diseño web', 'Desarrollo web', 'SEO', 'Contenido web', 'SEO local', 'GEO y AEO'],
+  ...(SOCIAL_LINKS.length > 0 ? { sameAs: SOCIAL_LINKS.map((item) => item.href) } : {}),
+};
+const organizationSchema = includeOrganization ? [{
   '@context': 'https://schema.org',
   '@type': 'Organization',
   '@id': organizationId,
@@ -79,6 +119,7 @@ const organizationSchema = [{
   email: BUSINESS_EMAIL,
   url: siteUrl,
   logo: siteUrl ? `${siteUrl}/favicon.svg` : '/favicon.svg',
+  founder: { '@id': personId },
   areaServed: [
     { '@type': 'Country', name: 'Chile' },
     { '@type': 'AdministrativeArea', name: 'Región Metropolitana' },
@@ -93,7 +134,8 @@ const organizationSchema = [{
     'GEO',
     'AEO',
   ],
-}];
+  ...(SOCIAL_LINKS.length > 0 ? { sameAs: SOCIAL_LINKS.map((item) => item.href) } : {}),
+}] : [];
 const websiteSchema = [{
   '@context': 'https://schema.org',
   '@type': 'WebSite',
@@ -105,6 +147,7 @@ const websiteSchema = [{
 }];
 const jsonLd = [
   ...organizationSchema,
+  personSchema,
   ...websiteSchema,
   ...breadcrumbSchema,
   ...pageSchemas,
@@ -118,6 +161,9 @@ const absoluteImage = siteUrl ? new URL(image, `${siteUrl}/`).href : undefined;
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#252321" />
     <meta name="description" content={description} />
+    {googleSiteVerification && <meta name="google-site-verification" content={googleSiteVerification} />}
+    {noindex && <meta name="robots" content="noindex, follow" />}
+    <meta name="last-modified" content={modifiedTime} />
     <meta property="og:type" content={type} />
     <meta property="og:locale" content="es_CL" />
     <meta property="og:site_name" content={SITE_NAME} />
@@ -126,8 +172,18 @@ const absoluteImage = siteUrl ? new URL(image, `${siteUrl}/`).href : undefined;
     {canonical && <link rel="canonical" href={canonical} />}
     {canonical && <meta property="og:url" content={canonical} />}
     {absoluteImage && <meta property="og:image" content={absoluteImage} />}
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={imageAlt} />
     {type === 'article' && publishedTime && <meta property="article:published_time" content={publishedTime} />}
+    {type === 'article' && modifiedTime && <meta property="article:modified_time" content={modifiedTime} />}
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    {absoluteImage && <meta name="twitter:image" content={absoluteImage} />}
+    {absoluteImage && <meta name="twitter:image:alt" content={imageAlt} />}
+    <link rel="preload" href="/fonts/lato-black.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/lato-regular.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>{title}</title>
     {jsonLd.map((item) => <script type="application/ld+json" set:html={item} />)}

@@ -10,6 +10,7 @@ El blog usa archivos Markdown para que puedas publicar sin entrar al código de 
 title: "Pregunta o tema del artículo"
 description: "Resumen específico del artículo, útil para compartir y buscar."
 publishDate: 2026-11-23
+updatedDate: 2026-11-28
 category: "Diseño web"
 readingTime: 6
 draft: true
@@ -24,4 +25,4 @@ Categorías admitidas: `Diseño web`, `SEO` y `SEO + IA`. El esquema valida los 
 
 ## Dominio de producción
 
-Configura la variable `SITE_URL` en el entorno de build con el origen canónico completo, por ejemplo `https://tu-dominio.com`. Sin ella el build omite canonicals absolutos y sitemap para evitar publicar URLs falsas. Con ella, el build escribe `sitemap.xml` y declara su ubicación en `robots.txt`.
+Configura la variable `SITE_URL` en el entorno de build con el origen canónico completo, por ejemplo `https://tu-dominio.com`. Si no se define, el proyecto usa de forma deliberada `https://rangel.design`. Con ella, Astro y el generador escriben el mismo origen en canonicales, datos estructurados, `sitemap.xml` y `robots.txt`.

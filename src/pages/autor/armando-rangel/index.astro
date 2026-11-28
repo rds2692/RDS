@@ -1,0 +1,107 @@
+---
+import Header from '../../../components/Header.astro';
+import SiteFooter from '../../../components/SiteFooter.astro';
+import CharacterPortrait from '../../../components/CharacterPortrait.astro';
+import MainLayout from '../../../layouts/MainLayout.astro';
+import { BUSINESS_EMAIL, FOUNDER_JOB_TITLE, FOUNDER_NAME, FOUNDER_PROFILE_PATH, SITE_NAME } from '../../../site';
+
+const description = 'Perfil profesional de Armando Rangel, fundador de Rangel Designs Studio. Conoce su enfoque de trabajo en diseño web, desarrollo y SEO.';
+const profileUrl = Astro.site ? new URL(FOUNDER_PROFILE_PATH, Astro.site).href : FOUNDER_PROFILE_PATH;
+const personId = Astro.site ? `${Astro.site.href.replace(/\/$/, '')}/#armando-rangel` : '/#armando-rangel';
+const schema = [
+  {
+    '@type': 'ProfilePage',
+    name: `Perfil de ${FOUNDER_NAME}`,
+    description,
+    mainEntity: {
+      '@type': 'Person',
+      '@id': personId,
+      name: FOUNDER_NAME,
+      jobTitle: FOUNDER_JOB_TITLE,
+      url: profileUrl,
+      worksFor: { '@type': 'Organization', name: SITE_NAME },
+      knowsAbout: ['Diseño web', 'Desarrollo web', 'SEO', 'Contenido web', 'SEO local', 'GEO y AEO'],
+    },
+  },
+];
+---
+<MainLayout
+  title={`${FOUNDER_NAME}, fundador de RDS | Perfil profesional`}
+  description={description}
+  imageAlt={`${FOUNDER_NAME}, fundador de Rangel Designs Studio`}
+  schema={schema}
+>
+  <div id="top" class="site-shell">
+    <Header />
+    <main id="contenido">
+      <section class="directory-hero studio-hero section-pad">
+        <nav class="breadcrumbs" aria-label="Migas de pan">
+          <a href="/">Inicio</a><span aria-hidden="true">/</span>
+          <a href="/autor/">Autor</a><span aria-hidden="true">/</span>
+          <span aria-current="page">{FOUNDER_NAME}</span>
+        </nav>
+        <h1>{FOUNDER_NAME}<br /><span>detrás de RDS.</span></h1>
+        <p class="directory-intro">Dirijo Rangel Designs Studio. Trabajo en la intersección entre estrategia, diseño, desarrollo y visibilidad para que una web explique el negocio y facilite una conversación comercial.</p>
+      </section>
+
+      <section class="studio-manifesto section-pad">
+        <CharacterPortrait
+          src="/images/armando/expresion-07.webp"
+          alt="Armando Rangel mirando hacia un costado con una sonrisa"
+          caption={`${FOUNDER_NAME}, fundador de ${SITE_NAME}.`}
+          tone="blush"
+        />
+        <div>
+          <h2>Mi función dentro del proyecto</h2>
+          <p>RDS es un estudio pequeño y directo. La persona que conversa contigo al inicio participa en la definición de la arquitectura y coordina el trabajo necesario para construir o mejorar el sitio.</p>
+          <p>Primero aclaro qué debe lograr la web, quién tiene que entenderla y qué información permite confiar. Después ordeno páginas, mensajes, componentes y criterios de publicación. La estética entra en ese sistema, no como una capa posterior.</p>
+          <p>En SEO reviso la base técnica, la intención de las páginas, los enlaces internos y la coherencia entre el contenido visible y los datos estructurados. No prometo posiciones ni citas en plataformas de IA. Busco que el sitio sea rastreable, comprensible y verificable.</p>
+        </div>
+      </section>
+
+      <section class="principles-section section-pad" aria-labelledby="author-principles">
+        <div class="section-heading">
+          <h2 id="author-principles">Cómo trabajo</h2>
+          <p class="section-intro">El criterio es reducir decisiones ocultas y dejar evidencia de lo que se acordó.</p>
+        </div>
+        <div class="principles-grid">
+          <a href="/estudio/">
+            <span>01</span>
+            <h3>Entender antes de proponer</h3>
+            <p>Reviso objetivo comercial, audiencia, contenidos disponibles, plataforma y restricciones antes de definir una solución.</p>
+            <span class="card-link-label">Ver cómo trabaja el estudio <span aria-hidden="true">↗</span></span>
+          </a>
+          <a href="/diseno-web/">
+            <span>02</span>
+            <h3>Construir con criterios visibles</h3>
+            <p>Arquitectura, diseño, desarrollo y revisión comparten un alcance escrito. Los cambios que lo modifican se presupuestan.</p>
+            <span class="card-link-label">Conocer el servicio de diseño web <span aria-hidden="true">↗</span></span>
+          </a>
+          <a href="/proyectos/">
+            <span>03</span>
+            <h3>Publicar solo evidencia autorizada</h3>
+            <p>Los casos, capturas, testimonios y métricas requieren permiso. Si no existe evidencia publicable, no se presenta como resultado.</p>
+            <span class="card-link-label">Leer los criterios de publicación <span aria-hidden="true">↗</span></span>
+          </a>
+        </div>
+      </section>
+
+      <article class="article-page">
+        <div class="article-content">
+          <h2>Experiencia profesional verificable</h2>
+          <p>Los artículos firmados por {FOUNDER_NAME} expresan el enfoque editorial y técnico de RDS. Cada afirmación que dependa de documentación externa debe enlazar a una fuente identificable. Los resultados de clientes solo se publican con autorización y contexto.</p>
+          <p>Si necesitas conocer la experiencia específica para tu sector, solicita una conversación y pide los antecedentes que sean relevantes. También puedes revisar los <a href="/servicios/">servicios del estudio</a>, los <a href="/proyectos/">criterios de publicación de proyectos</a> y las <a href="/preguntas-frecuentes/">respuestas sobre alcance, acceso y propiedad del sitio</a>.</p>
+          <h2>Contacto profesional</h2>
+          <p>Puedes escribir a <a href={`mailto:${BUSINESS_EMAIL}`}>{BUSINESS_EMAIL}</a> o preparar una consulta desde la <a href="/contacto/">página de contacto</a>. En el mensaje conviene indicar qué hace el negocio, qué necesita resolver y si ya existe una web.</p>
+        </div>
+      </article>
+
+      <section class="contact-band section-pad">
+        <h2>Conversemos sobre<br />el proyecto real.</h2>
+        <a class="button button-paper" href="/contacto/">Cuéntame tu proyecto <span aria-hidden="true">↗</span></a>
+        <span class="contact-spark" aria-hidden="true">✳</span>
+      </section>
+    </main>
+    <SiteFooter />
+  </div>
+</MainLayout>

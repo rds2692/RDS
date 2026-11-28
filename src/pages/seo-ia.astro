@@ -26,6 +26,22 @@ const posts = allPosts.filter(({ data }) => data.category === 'SEO + IA').slice(
     'Métricas de búsqueda disponibles para seguir la evolución',
   ]}
   note={{ title: 'No existe una etiqueta que garantice citas', text: 'Google indica que no requiere Schema especial ni archivos de IA para aparecer en AI Overviews o AI Mode. No garantizamos citas ni recomendaciones en plataformas de IA.', href: '/seo/', cta: 'Ver planes de posicionamiento' }}
+  detail={{
+    title: 'Qué significa preparar una web para búsquedas con IA',
+    paragraphs: [
+      'Una respuesta generativa necesita identificar una página, entender de qué trata y reunir evidencia suficiente para citarla. Ese proceso empieza con un sitio que Google pueda rastrear y con contenido que una persona pueda leer, comprobar y usar.',
+      'GEO y AEO no reemplazan al SEO. Ordenan la forma en que el sitio explica servicios, entidades, límites, fuentes y relaciones internas. También ayudan a distinguir afirmaciones verificables de promesas comerciales que no pueden respaldarse.',
+      'Un trabajo útil separa tres preguntas: si la página puede indexarse, si responde mejor que una fuente genérica y si la información coincide con lo que aparece en el HTML, los datos estructurados y la experiencia real del negocio.'
+    ],
+    items: [
+      { title: 'Rastreo e indexación', text: 'Revisamos robots, canonicales, estados HTTP, enlaces internos y acceso al contenido principal. Una página que no puede rastrearse no compite por una cita.' },
+      { title: 'Intención y respuesta', text: 'Cada página debe cubrir una necesidad concreta. La apertura responde la pregunta principal; el resto entrega criterios, pasos, límites y contexto.' },
+      { title: 'Entidades verificables', text: 'Nombres, servicios, áreas de atención, autor y organización se describen de forma consistente en texto visible y datos estructurados.' },
+      { title: 'Fuentes identificables', text: 'Las afirmaciones que dependen de documentación externa enlazan a la fuente. Si no existe respaldo, la afirmación se corrige o se elimina.' },
+      { title: 'Experiencia propia', text: 'Casos, capturas, metodología y decisiones explican cómo se trabaja. Los ejemplos personales solo se publican cuando pueden sostenerse con evidencia.' },
+      { title: 'Medición realista', text: 'Search Console permite observar impresiones, clics e indexación. Las plataformas de IA no ofrecen garantías ni una etiqueta que fuerce una recomendación.' }
+    ]
+  }}
   process={[
     { title: 'Revisar', text: 'Analizamos rastreo, páginas, contenido, fuentes y estructura.' },
     { title: 'Aclarar', text: 'Priorizamos respuestas directas, datos verificables y enlaces útiles.' },

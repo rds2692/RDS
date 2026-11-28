@@ -23,7 +23,7 @@ const schema = [
       '@type': 'ListItem',
       position: index + 1,
       name: `Diseño web en ${area.name}`,
-      url: `https://rangel.design/diseno-web-santiago/${area.slug}/`,
+      url: Astro.site ? new URL(`/diseno-web-santiago/${area.slug}/`, Astro.site).href : `/diseno-web-santiago/${area.slug}/`,
     })),
   },
 ];
@@ -33,7 +33,7 @@ const schema = [
     <Header />
     <main id="contenido">
       <section class="directory-hero local-hub-hero section-pad">
-        <nav class="breadcrumbs" aria-label="Migas de pan"><a href="/">Inicio</a><span aria-hidden="true">/</span><a href="/diseno-web/">Diseño web</a><span aria-hidden="true">/</span><span aria-current="page">Santiago</span></nav>
+        <nav class="breadcrumbs" aria-label="Migas de pan"><a href="/">Inicio</a><span aria-hidden="true">/</span><a href="/servicios/">Servicios</a><span aria-hidden="true">/</span><span aria-current="page">Diseño web en Santiago</span></nav>
         <h1>Diseño web en Santiago <span>para negocios que quieren crecer.</span></h1>
         <p class="directory-intro">Creamos sitios para empresas, pymes y profesionales de la Región Metropolitana. RDS ordena la estrategia, el diseño, el desarrollo y una base técnica preparada para buscadores.</p>
         <div class="hero-actions">
