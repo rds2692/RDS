@@ -3,40 +3,9 @@ import { gsap } from 'gsap';
 const init = () => {
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (reduceMotion) return;
-  const compactMotion = window.matchMedia('(max-width: 760px)').matches;
 
   const controller = new AbortController();
   const context = gsap.context(() => {
-    if (document.querySelector('.hero-wordmark')) {
-      const intro = gsap.timeline({ defaults: { ease: 'power3.out' } });
-      intro
-        .from('.hero-wordmark', {
-          y: compactMotion ? 34 : 52,
-          scale: compactMotion ? 0.95 : 0.9,
-          opacity: compactMotion ? 1 : 0,
-          duration: compactMotion ? 0.72 : 1.15,
-          ease: 'expo.out',
-        })
-        .from('.hero-tagline', {
-          y: compactMotion ? 22 : 36,
-          opacity: compactMotion ? 1 : 0,
-          duration: compactMotion ? 0.55 : 0.8,
-        }, compactMotion ? '-=0.4' : '-=0.62')
-        .from('.hero-subline, .hero-description', {
-          y: compactMotion ? 14 : 20,
-          opacity: compactMotion ? 1 : 0,
-          stagger: 0.08,
-          duration: compactMotion ? 0.48 : 0.62,
-        }, compactMotion ? '-=0.28' : '-=0.46')
-        .from('.hero-actions, .hero-scene-hint', {
-          y: compactMotion ? 10 : 16,
-          opacity: compactMotion ? 1 : 0,
-          stagger: 0.08,
-          duration: compactMotion ? 0.42 : 0.55,
-        }, compactMotion ? '-=0.2' : '-=0.38')
-        .from('.hero-kicker', { opacity: 0, duration: 0.7 }, 0);
-    }
-
     gsap.utils.toArray<HTMLElement>('.service-tile, .button-primary').forEach((element) => {
       const lift = gsap.quickTo(element, 'y', { duration: 0.22, ease: 'power2.out' });
       element.addEventListener('pointerenter', (event) => {

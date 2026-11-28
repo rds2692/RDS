@@ -1,0 +1,217 @@
+---
+interface Props {
+  src: string;
+  alt: string;
+  label: string;
+  caption: string;
+  index: string;
+  tone?: 'sage' | 'blush' | 'peach' | 'sand';
+  compact?: boolean;
+}
+
+const {
+  src,
+  alt,
+  label,
+  caption,
+  index,
+  tone = 'sage',
+  compact = false,
+} = Astro.props;
+---
+
+<figure class:list={['character-portrait', `character-${tone}`, { 'character-compact': compact }]}>
+  <div class="character-topline">
+    <span>RDS / RETRATO</span>
+    <span>{index}</span>
+  </div>
+  <div class="character-stage">
+    <span class="character-orbit" aria-hidden="true"></span>
+    <span class="character-spark" aria-hidden="true">✳</span>
+    <div class="character-frame">
+      <img src={src} alt={alt} width="370" height="366" loading="lazy" decoding="async" />
+    </div>
+  </div>
+  <figcaption>
+    <strong>{label}</strong>
+    <p>{caption}</p>
+  </figcaption>
+</figure>
+
+<style>
+  .character-portrait {
+    position: relative;
+    width: 100%;
+    max-width: 520px;
+    margin: 0 auto;
+    padding: 1rem;
+    overflow: hidden;
+    background: var(--mint);
+    color: var(--ink);
+    isolation: isolate;
+  }
+
+  .character-portrait::after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    width: 150px;
+    height: 120px;
+    right: -60px;
+    bottom: 8%;
+    border-radius: 50%;
+    background: var(--red);
+    opacity: .75;
+  }
+
+  .character-blush { background: var(--lilac); }
+  .character-peach { background: var(--orange); }
+  .character-sand { background: var(--sand); }
+
+  .character-topline {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    font-size: .54rem;
+    font-weight: 900;
+    letter-spacing: .1em;
+  }
+
+  .character-stage {
+    position: relative;
+    display: grid;
+    min-height: 385px;
+    margin: .8rem 0;
+    padding: 1.35rem .9rem;
+    overflow: hidden;
+    place-items: center;
+    background: rgb(246 240 229 / 78%);
+  }
+
+  .character-stage::before,
+  .character-stage::after {
+    content: "";
+    position: absolute;
+    border: 1px solid rgb(44 38 34 / 28%);
+    border-radius: 50%;
+  }
+
+  .character-stage::before {
+    width: 125%;
+    height: 50%;
+    transform: rotate(-20deg);
+  }
+
+  .character-stage::after {
+    width: 86%;
+    height: 68%;
+    transform: rotate(44deg);
+  }
+
+  .character-orbit {
+    position: absolute;
+    width: 78%;
+    aspect-ratio: 1;
+    border: 1px dashed rgb(44 38 34 / 34%);
+    border-radius: 50%;
+    transform: scaleY(.62) rotate(-25deg);
+  }
+
+  .character-spark {
+    position: absolute;
+    z-index: 2;
+    top: .7rem;
+    right: .85rem;
+    color: var(--red);
+    font-size: 2rem;
+    line-height: 1;
+    transform: rotate(16deg);
+  }
+
+  .character-frame {
+    position: relative;
+    z-index: 1;
+    width: min(76%, 325px);
+    background: #f6f0e5;
+    box-shadow: 8px 8px 0 rgb(44 38 34 / 15%);
+    transform: rotate(-1.5deg);
+  }
+
+  .character-frame img {
+    display: block;
+    width: 100%;
+    height: 355px;
+    object-fit: contain;
+    object-position: center bottom;
+  }
+
+  figcaption {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    align-items: start;
+    gap: .8rem;
+    padding-top: .7rem;
+    border-top: 1px solid rgb(44 38 34 / 24%);
+  }
+
+  figcaption strong {
+    color: var(--ink);
+    font-size: .58rem;
+    letter-spacing: .08em;
+    line-height: 1.4;
+  }
+
+  figcaption p {
+    max-width: 320px;
+    margin: 0;
+    font-size: .76rem;
+    line-height: 1.42;
+  }
+
+  .character-compact {
+    max-width: 380px;
+    padding: .75rem;
+  }
+
+  .character-compact .character-stage {
+    min-height: 285px;
+    margin-block: .6rem;
+    padding: 1rem .7rem;
+  }
+
+  .character-compact .character-frame {
+    width: min(72%, 230px);
+  }
+
+  .character-compact .character-frame img {
+    height: 250px;
+  }
+
+  .character-compact figcaption {
+    grid-template-columns: 1fr;
+    gap: .3rem;
+  }
+
+  @media (max-width: 520px) {
+    .character-stage {
+      min-height: 340px;
+    }
+
+    .character-frame img {
+      height: 310px;
+    }
+
+    figcaption {
+      grid-template-columns: 1fr;
+      gap: .35rem;
+    }
+
+    .character-compact .character-stage {
+      min-height: 260px;
+    }
+
+    .character-compact .character-frame img {
+      height: 225px;
+    }
+  }
+</style>

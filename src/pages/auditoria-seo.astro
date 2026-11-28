@@ -1,5 +1,6 @@
 ---
 import ServicePage from '../components/ServicePage.astro';
+import CharacterPortrait from '../components/CharacterPortrait.astro';
 import { AUDIT, IMPLEMENTATION } from '../data/pricing';
 const plans = [AUDIT, IMPLEMENTATION];
 ---
@@ -33,4 +34,53 @@ const plans = [AUDIT, IMPLEMENTATION];
     { question: '¿La auditoría incluye una copia de seguridad?', answer: 'Se verifica o coordina un respaldo autorizado antes de cualquier intervención. La auditoría por sí sola no autoriza cambios en el sitio.' },
   ]}
   posts={[]}
-/>
+>
+  <Fragment slot="insight">
+    <section class="audit-character section-pad">
+      <CharacterPortrait
+        compact
+        src="/images/armando/expresion-05.webp"
+        alt="Armando Rangel con una expresión de duda"
+        label="MIRAR DOS VECES"
+        caption="Una segunda revisión puede cambiar la prioridad, el alcance y el riesgo."
+        index="05 / 07"
+        tone="sand"
+      />
+      <div>
+        <p class="eyebrow eyebrow-dark">ANTES DE INTERVENIR</p>
+        <h2>Si algo no cierra, conviene detenerse.</h2>
+        <p>Una dependencia oculta, un acceso faltante o un plugin crítico pueden cambiar por completo el trabajo. Preferimos documentar la duda antes que convertirla en una corrección improvisada.</p>
+        <a class="text-link" href="/contacto/">Revisar mi sitio <span aria-hidden="true">↗</span></a>
+      </div>
+    </section>
+  </Fragment>
+</ServicePage>
+
+<style>
+  .audit-character {
+    display: grid;
+    max-width: 1180px;
+    margin-inline: auto;
+    padding-block: clamp(4rem, 8vw, 8rem);
+    grid-template-columns: minmax(280px, .72fr) minmax(0, 1fr);
+    align-items: center;
+    gap: clamp(2rem, 7vw, 6rem);
+  }
+
+  .audit-character h2 {
+    max-width: 700px;
+    margin-bottom: 1rem;
+    font-size: clamp(2.2rem, 4.8vw, 4.8rem);
+  }
+
+  .audit-character p:not(.eyebrow) {
+    max-width: 650px;
+    line-height: 1.6;
+  }
+
+  @media (max-width: 760px) {
+    .audit-character {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

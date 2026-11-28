@@ -649,19 +649,24 @@ h3 { font-size: clamp(1.45rem, 2vw, 2rem); line-height: 1.05; }
   [data-reveal] { opacity: 1 !important; transform: none !important; }
 }
 
-/* RDS poster system — deep forest, acid lime and coral */
+/* RDS poster system — illustration palette with coral and lime accents */
 :root {
-  --paper: #f6f0e5;
-  --ink: #0d1512;
-  --violet: #0b332e;
-  --blue: #0b332e;
-  --blue-deep: #051f1c;
-  --red: #e94a36;
-  --orange: #ff9b57;
-  --mint: #a8e8c1;
-  --lilac: #cfc2ea;
-  --yellow: #d8ff61;
-  --cream: #ece3d4;
+  --paper: #f6f1e6;
+  --ink: #252321;
+  --violet: #56504b;
+  --blue: #252321;
+  --blue-deep: #151412;
+  --red: #db6753;
+  --orange: #edc6a4;
+  --mint: #c7d8bf;
+  --lilac: #ecd4ca;
+  --yellow: #f2d9ae;
+  --cream: #eadfd2;
+  --sand: #f2dec5;
+  --beige: #efe0c8;
+  --blush: #f0d7cd;
+  --surface: #fcf8f1;
+  --lime: #d8ff61;
   --line: 0;
   --shadow-hard: none;
   --radius: 0;
@@ -699,7 +704,7 @@ body {
 a:focus-visible,
 button:focus-visible,
 summary:focus-visible {
-  outline: 3px solid var(--yellow);
+  outline: 3px solid var(--lime);
   outline-offset: 4px;
 }
 
@@ -781,7 +786,7 @@ h2 span {
 
 .button-primary:hover,
 .button-red:hover {
-  background: #c83b29;
+  background: #bd4f3f;
 }
 
 .button-ink {
@@ -812,7 +817,7 @@ h2 span {
 }
 
 .text-link-light:hover {
-  color: var(--yellow);
+  color: var(--lime);
 }
 
 /* Navigation */
@@ -835,7 +840,7 @@ h2 span {
 }
 
 .registered {
-  color: var(--yellow);
+  color: var(--lime);
 }
 
 .brand-name {
@@ -857,7 +862,7 @@ h2 span {
 
 .primary-nav a:not(.nav-cta):hover,
 .primary-nav a[aria-current="page"] {
-  color: var(--yellow);
+  color: var(--lime);
 }
 
 .nav-cta {
@@ -872,7 +877,7 @@ h2 span {
 }
 
 .nav-cta:hover {
-  background: #c83b29;
+  background: #bd4f3f;
 }
 
 /* Poster hero */
@@ -881,7 +886,7 @@ h2 span {
   padding: 0 var(--page-gutter);
   overflow: hidden;
   background:
-    radial-gradient(circle at 50% 38%, #174a3f 0, #0b332e 43%, var(--blue-deep) 100%);
+    radial-gradient(circle at 50% 38%, #44413d 0, var(--blue) 43%, var(--blue-deep) 100%);
   color: white;
   isolation: isolate;
 }
@@ -942,7 +947,7 @@ h2 span {
   z-index: -1;
   inset: 8% 4% 6%;
   pointer-events: none;
-  background: radial-gradient(ellipse at center, rgb(5 31 28 / 70%) 0%, rgb(5 31 28 / 38%) 45%, transparent 75%);
+  background: radial-gradient(ellipse at center, rgb(35 24 20 / 70%) 0%, rgb(35 24 20 / 38%) 45%, transparent 75%);
   filter: blur(12px);
 }
 
@@ -978,7 +983,7 @@ h2 span {
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: var(--yellow);
+  background: var(--lime);
   box-shadow: 0 0 0 5px rgb(216 255 97 / 11%);
   animation: scene-pulse 2.2s ease-in-out infinite;
 }
@@ -1006,7 +1011,7 @@ h2 span {
   align-items: center;
   justify-content: center;
   margin-bottom: clamp(1rem, 2.2vw, 2rem);
-  color: var(--yellow);
+  color: var(--lime);
   font: 900 clamp(8.4rem, 22vw, 21rem)/.72 var(--font-family);
   letter-spacing: -.105em;
   text-shadow: .025em .03em 0 rgb(17 17 17 / 92%);
@@ -1051,11 +1056,11 @@ h2 span {
   letter-spacing: -.04em;
   line-height: .96;
   text-transform: uppercase;
-  text-shadow: 0 2px 26px rgb(5 31 28 / 70%);
+  text-shadow: 0 2px 26px rgb(35 24 20 / 70%);
 }
 
 .hero-tagline span {
-  color: var(--yellow);
+  color: var(--lime);
 }
 
 .hero-subline {
@@ -1066,11 +1071,11 @@ h2 span {
   justify-content: center;
   gap: .8rem;
   margin: .85rem 0 0;
-  color: var(--yellow);
+  color: var(--lime);
   font-size: clamp(.62rem, 1vw, .8rem);
   font-weight: 900;
   letter-spacing: .09em;
-  text-shadow: 0 1px 12px rgb(5 31 28 / 82%);
+  text-shadow: 0 1px 12px rgb(35 24 20 / 82%);
 }
 
 .hero-subline i {
@@ -1086,7 +1091,7 @@ h2 span {
   color: rgb(255 255 255 / 76%);
   font-size: clamp(.98rem, 1.35vw, 1.18rem);
   line-height: 1.55;
-  text-shadow: 0 2px 14px rgb(5 31 28 / 80%);
+  text-shadow: 0 2px 14px rgb(35 24 20 / 80%);
 }
 
 .hero-actions {
@@ -1613,7 +1618,7 @@ h2 span {
 }
 
 .price-tone-lilac {
-  --price-accent: #7763b6;
+  --price-accent: #9a6a56;
   --price-tint: #f7f4fb;
 }
 
@@ -1623,7 +1628,7 @@ h2 span {
 }
 
 .price-tone-mint {
-  --price-accent: #199b78;
+  --price-accent: #6d8264;
   --price-tint: #f1f8f4;
 }
 
@@ -1719,7 +1724,7 @@ h2 span {
 }
 
 .local-pack-card.price-tone-lilac {
-  --price-accent: #7763b6;
+  --price-accent: #9a6a56;
 }
 
 .monthly-heading {
@@ -1833,7 +1838,7 @@ h2 span {
 }
 
 .contact-band .eyebrow {
-  color: var(--yellow);
+  color: var(--lime);
 }
 
 .contact-spark {
@@ -1877,7 +1882,7 @@ h2 span {
 .service-hero h1 span,
 .blog-index-hero h1 span,
 .contact-page h1 span {
-  color: var(--yellow);
+  color: var(--lime);
 }
 
 .directory-hero .eyebrow,
@@ -3486,4 +3491,56 @@ a.process-card:hover,
     padding: .5rem .65rem;
     font-size: .58rem;
   }
+}
+
+/* Illustration-led surfaces. Coral and lime stay as accents. */
+.hero-asterisk-one {
+  color: var(--lime);
+}
+
+.button-paper,
+.form-field input,
+.form-field select,
+.form-field textarea {
+  background: var(--surface);
+}
+
+.manifesto-section,
+.services-section,
+.method-section,
+.service-value,
+.outcome-grid,
+.faq-section,
+.studio-manifesto,
+.case-promise,
+.contact-form-section,
+.local-explainer,
+.terms-section,
+.project-teaser,
+.price-teaser,
+.blog-index,
+.faq-page-content,
+.site-footer {
+  background: var(--paper);
+}
+
+.outcome-card,
+.process-card,
+.principles-grid article {
+  background: var(--surface);
+}
+
+.blog-section,
+.related-section {
+  background: #e4e8dd;
+}
+
+.service-note,
+.blog-prompt,
+.projects-empty,
+.audit-strip,
+.protocol-band,
+.contact-prompt,
+.local-checklist {
+  background: var(--sand);
 }

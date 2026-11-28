@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
-  <rect width="1200" height="630" fill="#0B332E"/>
+  <rect width="1200" height="630" fill="#252321"/>
   <circle cx="1067" cy="68" r="170" fill="none" stroke="#FFFFFF" stroke-opacity=".13"/>
   <circle cx="1067" cy="68" r="126" fill="none" stroke="#FFFFFF" stroke-opacity=".13" stroke-dasharray="5 12"/>
   <circle cx="94" cy="548" r="120" fill="none" stroke="#FFFFFF" stroke-opacity=".11"/>
@@ -7,13 +7,13 @@
   <text x="1138" y="60" text-anchor="end" fill="#FFFFFF" fill-opacity=".72" font-family="Lato,Arial,sans-serif" font-size="16" font-weight="700" letter-spacing="3">CHILE + LATINOAMÉRICA</text>
   <g font-family="Lato,Arial,sans-serif" font-weight="900">
     <text x="55" y="291" fill="#D8FF61" font-size="240" letter-spacing="-18">R</text>
-    <ellipse cx="303" cy="236" rx="71" ry="58" fill="#E94A36" transform="rotate(-5 303 236)"/>
+    <ellipse cx="303" cy="236" rx="71" ry="58" fill="#DB6753" transform="rotate(-5 303 236)"/>
     <text x="251" y="291" fill="#FFFFFF" font-size="217" letter-spacing="-12">D</text>
     <text x="341" y="291" fill="#D8FF61" font-size="240" letter-spacing="-18">S</text>
   </g>
   <text x="600" y="373" text-anchor="middle" fill="#FFFFFF" font-family="Lato,Arial,sans-serif" font-size="51" font-weight="900" letter-spacing="-1">MARCAS QUE SE VEN.</text>
   <text x="600" y="427" text-anchor="middle" fill="#D8FF61" font-family="Lato,Arial,sans-serif" font-size="51" font-weight="900" letter-spacing="-1">Y SE ENCUENTRAN.</text>
-  <rect x="456" y="470" width="288" height="55" fill="#E94A36"/>
+  <rect x="456" y="470" width="288" height="55" fill="#DB6753"/>
   <text x="600" y="505" text-anchor="middle" fill="#FFFFFF" font-family="Lato,Arial,sans-serif" font-size="15" font-weight="900" letter-spacing="2">DISEÑO WEB · SEO · IA</text>
   <text x="62" y="589" fill="#FFFFFF" fill-opacity=".7" font-family="Lato,Arial,sans-serif" font-size="15" font-weight="700" letter-spacing="2.5">RANGEL DESIGNS STUDIO</text>
   <text x="1138" y="589" text-anchor="end" fill="#D8FF61" font-family="Lato,Arial,sans-serif" font-size="15" font-weight="700" letter-spacing="2.5">RANGEL.DESIGN</text>
