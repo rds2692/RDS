@@ -43,14 +43,16 @@ for (const file of await htmlFiles(dist)) {
     : relative.endsWith('/index.html')
       ? `/${relative.slice(0, -'index.html'.length)}`
       : `/${relative.replace(/\.html$/, '')}`;
-  urls.push(new URL(route, site.origin).href);
+  const lastModified = html.match(/<meta\s+name=["']last-modified["']\s+content=["'](\d{4}-\d{2}-\d{2})["']/i)?.[1];
+  urls.push({ url: new URL(route, site.origin).href, lastModified });
 }
 
-const uniqueUrls = [...new Set(urls)].sort((a, b) => a.localeCompare(b));
+const uniqueUrls = [...new Map(urls.map((item) => [item.url, item])).values()]
+  .sort((a, b) => a.url.localeCompare(b.url));
 const xml = [
   '<?xml version="1.0" encoding="UTF-8"?>',
   '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
-  ...uniqueUrls.map((url) => `  <url><loc>${url.replaceAll('&', '&amp;')}</loc></url>`),
+  ...uniqueUrls.map(({ url, lastModified }) => `  <url><loc>${url.replaceAll('&', '&amp;')}</loc>${lastModified ? `<lastmod>${lastModified}</lastmod>` : ''}</url>`),
   '</urlset>',
   '',
 ].join('\n');

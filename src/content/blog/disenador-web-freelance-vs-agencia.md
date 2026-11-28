@@ -2,6 +2,7 @@
 title: "Diseñador web freelance vs agencia"
 description: "Compara costos, comunicación, especialidades y riesgos entre contratar un diseñador web freelance o una agencia para tu próximo proyecto."
 publishDate: 2026-11-24
+updatedDate: 2026-11-28
 category: "Diseño web"
 readingTime: 8
 ---
@@ -135,7 +136,7 @@ La documentación también permite que otra persona retome el trabajo si el prof
 
 Sí, siempre que el cliente sepa quién participa y quién responde por el resultado. Un freelance puede coordinar fotografía, redacción o desarrollo. Lo importante es aclarar el alcance, la confidencialidad y las condiciones de trabajo de cada colaborador.
 
-Una agencia también puede subcontratar. La diferencia no es la presencia de colaboradores externos, sino la transparencia y la responsabilidad final.
+Una agencia también puede subcontratar. La transparencia y la responsabilidad final diferencian una colaboración externa bien gestionada de una cadena de tareas sin responsable.
 
 ## ¿Puede una agencia pequeña competir con una grande?
 

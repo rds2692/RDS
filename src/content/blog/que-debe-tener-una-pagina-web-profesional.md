@@ -3,8 +3,9 @@ title: "¿Qué debe tener una página web profesional para generar consultas?"
 metaTitle: "Qué debe tener una página web profesional | RDS"
 description: "Una página web profesional explica qué ofreces, para quién es, por qué confiar y cuál es el siguiente paso. Revisa esta estructura antes de publicar."
 publishDate: 2026-11-23
+updatedDate: 2026-11-28
 category: "Diseño web"
-readingTime: 6
+readingTime: 10
 ---
 
 Una página web profesional ayuda a una persona a entender una oferta y decidir qué hacer después. Para lograrlo, debe explicar el servicio con claridad, responder las dudas importantes y facilitar el contacto.
@@ -53,8 +54,95 @@ Una estructura visual consistente también ayuda a recorrer el sitio. Las tarjet
 
 Google aconseja títulos únicos y descriptivos; también aclara que el buscador puede elegir el fragmento que muestra según el contenido de cada página. [Títulos y fragmentos en Google Search](https://developers.google.com/search/docs/appearance/title-link)
 
+## ¿Cómo saber si la página principal explica el negocio?
+
+Lee la portada como si no conocieras la empresa. Si después de treinta segundos todavía no puedes decir qué vende, para quién es y qué ocurre después del contacto, el problema no se resuelve cambiando el color del botón.
+
+La propuesta principal debe usar el lenguaje del cliente. Una expresión como “soluciones integrales para potenciar tu negocio” puede describir a cientos de empresas. “Diseño y desarrollo webs para consultoras que necesitan explicar servicios complejos” permite que una persona reconozca si está en el lugar correcto.
+
+También conviene revisar las llamadas a la acción. “Enviar” no explica el resultado. “Preparar una consulta”, “solicitar una propuesta” o “revisar planes” prepara mejor la expectativa. La etiqueta debe corresponder a lo que realmente sucede al pulsar.
+
+## ¿Cuánto contenido necesita una página de servicio?
+
+No existe una cantidad de palabras que obligue a Google a posicionar una página. La extensión importa menos que responder las preguntas que aparecen antes de contratar.
+
+Una página de servicio útil suele cubrir:
+
+- El problema que resuelve y para quién.
+- Qué incluye y qué no incluye.
+- Cómo se ejecuta el trabajo.
+- Qué necesita entregar el cliente.
+- Cuánto tiempo o qué factores afectan el plazo.
+- Cómo se mide el resultado.
+- Qué dudas aparecen antes de solicitar una propuesta.
+
+Si dos servicios tienen públicos, alcance o procesos distintos, pueden necesitar páginas separadas. Si la diferencia es mínima, una sola página bien explicada evita duplicar contenido. Puedes comparar el alcance de [diseño web para empresas](/diseno-web-empresas/) con una [auditoría SEO](/auditoria-seo/) para ver cómo cambia la intención.
+
+Los precios también forman parte de la explicación. No es obligatorio publicar una tarifa, pero sí aclarar qué factores la modifican. La página de [precios y condiciones](/precios/) permite que el visitante entienda el rango antes de escribir.
+
+## ¿Qué diferencia una web rápida de una web que solo parece rápida?
+
+La velocidad percibida se nota cuando el texto principal aparece, cuando los botones responden y cuando la página deja de moverse. Un video de fondo o una animación no convierten una web en rápida.
+
+Para evaluar el rendimiento conviene separar tres métricas:
+
+- **LCP:** cuánto tarda en aparecer el elemento principal.
+- **INP:** cuánto tarda la interfaz en responder a una interacción.
+- **CLS:** cuánto se mueve el contenido mientras carga.
+
+Google publica umbrales y explica que la evaluación se basa en datos reales de usuarios. [Core Web Vitals](https://web.dev/articles/vitals) recomienda LCP de 2,5 segundos o menos, INP de 200 milisegundos o menos y CLS de 0,1 o menos.
+
+Una prueba de laboratorio ayuda a detectar imágenes pesadas, fuentes, scripts y cambios de layout. No reemplaza los datos de campo. Antes de publicar, revisa la página con una conexión móvil simulada y después observa los informes disponibles cuando haya tráfico real.
+
+## ¿Cómo preparar imágenes sin perder calidad?
+
+Las imágenes deben tener un propósito. Una fotografía del equipo, un producto o un proyecto puede demostrar experiencia. Una imagen decorativa debe ser ligera y no competir con el contenido.
+
+Comprime fotografías en WebP o AVIF, define ancho y alto para reservar espacio y usa `loading="lazy"` en imágenes que aparecen lejos del primer viewport. La imagen principal puede cargarse con prioridad. No todas las imágenes necesitan la misma estrategia.
+
+El texto alternativo describe lo que la imagen comunica. “Armando Rangel mostrando un prototipo” es útil; “imagen SEO diseño web” repite palabras sin describir el contenido. Si una imagen es puramente decorativa, puede usar `alt=""`.
+
+## ¿Qué datos estructurados necesita una página?
+
+El marcado JSON-LD puede describir la organización, el servicio, los artículos y las migas de navegación. No mejora una página si contradice lo visible. Un artículo sin autor visible y un servicio con precios distintos al texto producen señales inconsistentes.
+
+Google recomienda que los datos estructurados representen el contenido de la página y no información inventada. [Datos estructurados de Google](https://developers.google.com/search/docs/appearance/structured-data/intro-structured-data) ofrece la guía base.
+
+Antes de añadir tipos avanzados, comprueba:
+
+1. Que exista una entidad clara que describir.
+2. Que el contenido visible respalde cada propiedad.
+3. Que las URLs y las fechas sean válidas.
+4. Que no haya bloques duplicados con valores diferentes.
+
+El Schema no sustituye una buena página de servicio. Describe lo que la página ya demuestra.
+
+## ¿Cómo revisar la navegación y los enlaces internos?
+
+Cualquier página importante debe poder alcanzarse desde el menú, el contenido o una página relacionada. Un enlace dentro de un texto debe describir el destino. “Ver diseño web para empresas” informa más que “haz clic aquí”.
+
+Revisa los enlaces desde la perspectiva de una ruta de decisión. Una persona puede llegar desde una búsqueda informativa, revisar el servicio, comparar precios, leer el proceso y contactar. El blog debe enlazar al servicio; el servicio puede enlazar a precios y a preguntas frecuentes.
+
+Estos enlaces ayudan a personas y buscadores, pero no garantizan una posición. Su función es reducir pasos y aclarar relaciones entre contenidos.
+
+## ¿Cómo medir si la web genera consultas?
+
+La primera señal no es el número de visitas. Es la capacidad de identificar qué páginas reciben impresiones, qué consultas activan esas impresiones y qué recorridos terminan en contacto.
+
+Search Console muestra consultas, clics, páginas y problemas de indexación. Una herramienta de analítica puede medir formularios, llamadas o descargas si se configuran eventos que representen acciones reales. Sin medición, una mejora de diseño y una mejora de captación parecen lo mismo.
+
+Define una línea base antes de publicar. Registra páginas indexables, títulos, consultas principales, conversiones disponibles y velocidad. Repite la revisión después de un período suficiente para observar tendencias.
+
+## Errores que conviene evitar antes del lanzamiento
+
+El primero es esconder información esencial dentro de imágenes o animaciones. El segundo es bloquear páginas con robots, contraseñas o enlaces rotos. El tercero es publicar datos estructurados que no coinciden con el contenido.
+
+También conviene evitar páginas de ubicación creadas solo cambiando el nombre de la ciudad. Los resultados locales dependen de relevancia, distancia y prominencia. Las [preguntas frecuentes](/preguntas-frecuentes/) explican qué información debe existir antes de prometer visibilidad en Maps.
+
+Por último, revisa la propiedad del dominio, el hosting y las cuentas. Una web atractiva sigue teniendo un problema si el cliente no controla los activos que necesita para mantenerla.
+
 ## ¿Por dónde empezar si tu web actual no genera consultas?
 
 Empieza por la página con más visitas o con mayor valor comercial. Revisa si explica el servicio, si coincide con lo que busca el cliente y si el contacto está visible. Después corrige las páginas rotas y añade enlaces hacia las páginas de servicio.
 
-En Rangel Designs Studio, el diseño web combina estrategia, contenido y desarrollo. [Conoce el servicio de diseño web](/diseno-web/).
+En Rangel Designs Studio, el diseño web combina estrategia, contenido y desarrollo. [Conoce el servicio de diseño web](/diseno-web/) o revisa [cómo trabaja el estudio](/estudio/) antes de definir el alcance.

@@ -2,6 +2,7 @@
 title: "¿Cuánto cuesta una página web en Chile?"
 description: "Revisa qué influye en el precio de una página web en Chile, qué diferencia los planes y qué debe incluir una cotización antes de contratar."
 publishDate: 2026-11-24
+updatedDate: 2026-11-28
 category: "Diseño web"
 readingTime: 9
 ---

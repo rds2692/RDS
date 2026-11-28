@@ -8,6 +8,7 @@ export interface LocalArea {
   contextTitle: string;
   context: string;
   focus: { title: string; text: string }[];
+  localNotes: { title: string; text: string }[];
   services: string[];
   faqs: { question: string; answer: string }[];
   nearby: string[];
@@ -27,6 +28,11 @@ export const LOCAL_AREAS: LocalArea[] = [
       { title: 'Autoridad sin ruido', text: 'Ordenamos experiencia, metodología y especialidades para que la trayectoria del negocio sea visible y verificable.' },
       { title: 'Consultas cualificadas', text: 'Cada servicio conduce a una acción clara: solicitar una reunión, preparar una propuesta o conocer un caso.' },
       { title: 'Diseño para decisores', text: 'Textos directos, navegación rápida y una experiencia móvil cuidada para quienes comparan alternativas durante el día.' },
+    ],
+    localNotes: [
+      { title: 'Compra consultiva', text: 'Una consultora o estudio profesional suele vender después de una conversación. La web debe explicar criterios, responsables y proceso antes de pedir una reunión.' },
+      { title: 'Pruebas profesionales', text: 'Publica experiencia concreta, alcance y autorización. Un listado de servicios sin evidencia no permite distinguir una especialidad real de una oferta genérica.' },
+      { title: 'Rutas por perfil', text: 'Si atiendes empresas y personas con necesidades distintas, separa recorridos y mensajes. La misma propuesta para ambos públicos suele diluir la decisión.' }
     ],
     services: [
       'Sitios corporativos para consultoras, estudios legales, arquitectura y servicios B2B.',
@@ -55,6 +61,11 @@ export const LOCAL_AREAS: LocalArea[] = [
       { title: 'Percepción de solidez', text: 'La dirección visual, la jerarquía y la calidad del contenido deben estar a la altura de una empresa consolidada.' },
       { title: 'Medición del interés', text: 'Definimos eventos de formulario, llamadas y contacto para saber qué servicios y páginas generan oportunidades.' },
     ],
+    localNotes: [
+      { title: 'Decisiones entre áreas', text: 'Una empresa con varias unidades necesita explicar qué corresponde a cada servicio y quién toma la decisión. La navegación debe evitar que todas las rutas parezcan iguales.' },
+      { title: 'Respaldo institucional', text: 'Equipo, metodología, clientes autorizados y casos aportan contexto. La escala visual no sustituye la evidencia de que el trabajo puede ejecutarse.' },
+      { title: 'Procesos conectados', text: 'Si existen CRM, cotizadores o formularios internos, define qué ocurre después del envío. Una integración útil reduce pasos manuales y deja trazabilidad.' }
+    ],
     services: [
       'Sitios corporativos con páginas independientes por servicio o unidad de negocio.',
       'Presentación de casos, equipo, metodología y respaldo institucional.',
@@ -81,6 +92,11 @@ export const LOCAL_AREAS: LocalArea[] = [
       { title: 'Claridad en pocos segundos', text: 'La portada debe responder qué hace el negocio, dónde atiende y cómo iniciar una conversación.' },
       { title: 'Experiencia móvil', text: 'Priorizamos lectura, botones y formularios para una persona que llega desde una búsqueda local o una red social.' },
       { title: 'Identidad con propósito', text: 'La personalidad visual debe reforzar la confianza y no competir con la información principal.' },
+    ],
+    localNotes: [
+      { title: 'Descubrimiento desde redes', text: 'Muchos negocios de Ñuñoa reciben visitas desde Instagram o recomendaciones. La web debe confirmar la oferta, los horarios y el canal de contacto sin depender de una red social.' },
+      { title: 'Oferta cotidiana', text: 'Gastronomía, salud y servicios de barrio compiten por una decisión rápida. La información operativa debe estar antes que una historia extensa sobre la marca.' },
+      { title: 'Identidad con lectura fácil', text: 'El carácter visual puede convivir con una experiencia simple. Evita animaciones que retrasen el menú, el mapa o el botón de reserva.' }
     ],
     services: [
       'Landing pages para profesionales y servicios que parten con una oferta concreta.',
@@ -109,6 +125,11 @@ export const LOCAL_AREAS: LocalArea[] = [
       { title: 'Confianza para comprar o cotizar', text: 'Fotografías propias, descripciones concretas y pruebas autorizadas reducen la incertidumbre.' },
       { title: 'Base preparada para crecer', text: 'La arquitectura permite sumar catálogo, servicios, sucursales o páginas de proyectos cuando el negocio lo necesite.' },
     ],
+    localNotes: [
+      { title: 'Catálogo antes del pago', text: 'Un comercio puede necesitar mostrar productos y cotizar por WhatsApp antes de abrir una tienda online completa.' },
+      { title: 'Cobertura clara', text: 'Servicios de distribución o atención a domicilio deben explicar qué zonas cubren y qué información necesitan para preparar una cotización.' },
+      { title: 'Contacto por tarea', text: 'Llamada, WhatsApp y formulario no cumplen la misma función. Prioriza el canal que el negocio realmente atiende y elimina los que no tienen respuesta.' }
+    ],
     services: [
       'Sitios para pymes y comercios con servicios, horarios y contacto directo.',
       'Landing pages para campañas y servicios específicos.',
@@ -136,6 +157,11 @@ export const LOCAL_AREAS: LocalArea[] = [
       { title: 'Presencia local responsable', text: 'La web comunica la zona de atención sin declarar oficinas ni sedes que no existan.' },
       { title: 'Contenido que reduce dudas', text: 'Resolvemos preguntas sobre cobertura, tiempos, proceso y canales antes de que el visitante tenga que escribir.' },
     ],
+    localNotes: [
+      { title: 'Servicios comparables', text: 'Profesionales y centros de servicio deben separar tratamientos, especialidades o modalidades cuando el visitante necesita comparar antes de reservar.' },
+      { title: 'Contacto desde móvil', text: 'Un botón pequeño o un formulario extenso puede perder la consulta. El canal principal debe funcionar con una mano y explicar el siguiente paso.' },
+      { title: 'Contenido posterior al lanzamiento', text: 'Las preguntas que llegan por teléfono pueden convertirse en secciones útiles. Ese contenido responde dudas reales y reduce conversaciones repetitivas.' }
+    ],
     services: [
       'Diseño responsive para comercios, profesionales y servicios de barrio.',
       'Páginas de servicio con preguntas frecuentes y formularios claros.',
@@ -157,11 +183,16 @@ export const LOCAL_AREAS: LocalArea[] = [
     description: 'Diseñamos sitios web claros y rápidos para pymes y profesionales de Puente Alto. Incluye estructura SEO inicial y contacto por WhatsApp.',
     intro: 'Diseñamos webs para pymes, servicios, profesionales y comercios de Puente Alto que necesitan dar el siguiente paso digital con una presencia profesional, simple de administrar y preparada para recibir consultas.',
     contextTitle: 'Una presencia profesional para negocios en crecimiento',
-    context: 'Muchos negocios de Puente Alto crecen por recomendación y atención directa. La web debe ordenar esa confianza y ampliar su alcance: mostrar qué ofrece el negocio, quién lo atiende, cómo trabaja y qué debe hacer un cliente nuevo. No necesitas una web enorme; necesitas una estructura honesta, rápida y coherente con la etapa del negocio.',
+    context: 'Muchos negocios de Puente Alto crecen por recomendación y atención directa. La web debe ordenar esa confianza y ampliar su alcance: mostrar qué ofrece el negocio, quién lo atiende, cómo trabaja y qué debe hacer un cliente nuevo. Una estructura honesta, rápida y coherente con la etapa del negocio permite crecer sin reconstruir todo.',
     focus: [
       { title: 'Una propuesta directa', text: 'La portada explica el servicio, el público y el beneficio sin frases vacías.' },
       { title: 'Contacto sin fricción', text: 'WhatsApp, teléfono y formulario se priorizan según la forma real de atender del negocio.' },
       { title: 'Preparación para crecer', text: 'La arquitectura permite añadir servicios, proyectos y contenidos sin reconstruir todo.' },
+    ],
+    localNotes: [
+      { title: 'Crecimiento por recomendación', text: 'Si el negocio llega por referidos, la web debe sostener la confianza que la persona ya recibió y aclarar qué ocurre al contactar.' },
+      { title: 'Una oferta principal', text: 'Una pyme que comienza puede concentrar la portada en su servicio más rentable y dejar los secundarios en páginas o secciones posteriores.' },
+      { title: 'Edición futura', text: 'El cliente debe saber cómo cambiar precios, horarios o servicios. Una web visualmente cuidada pierde valor si cada ajuste depende de una intervención técnica.' }
     ],
     services: [
       'Landing pages para profesionales y servicios con una oferta principal.',

@@ -81,6 +81,21 @@ const schema = [
         </div>
       </section>
 
+      <section class="local-area-context section-pad">
+        <div class="section-heading centered-heading">
+          <h2>Criterios para diseñar una web en {area.name}</h2>
+          <p class="section-intro">Estas decisiones cambian según el negocio, el público y la forma real de atender en {area.name}.</p>
+        </div>
+        <div class="outcome-grid">
+          {area.localNotes.map((item) => (
+            <article class="outcome-card">
+              <h3>{item.title}</h3>
+              <p>{item.text}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
       <section class="local-services-section section-pad">
         <div class="section-heading heading-split">
           <div>
