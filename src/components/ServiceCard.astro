@@ -4,10 +4,9 @@ interface Props {
   title: string;
   description: string;
   href: string;
-  tag: string;
   tone?: string;
 }
-const { number, title, description, href, tag, tone = 'violet' } = Astro.props;
+const { number, title, description, href, tone = 'violet' } = Astro.props;
 const visualWords: Record<string, string> = {
   '01': 'WEB',
   '02': 'SEARCH',
@@ -17,7 +16,6 @@ const visualWords: Record<string, string> = {
 };
 ---
 <a class={`service-card card-${tone}`} href={href}>
-  <span class="card-topline"><span>{number} / {tag}</span><span class="card-arrow" aria-hidden="true">↗</span></span>
   <span class="card-visual" aria-hidden="true"><span class="card-visual-number">{number}</span><span class="card-visual-word">{visualWords[number] ?? title.split(' ')[0]}</span><span class="card-visual-mark">✳</span></span>
   <span class="card-heading">{title}</span>
   <span class="card-description">{description}</span>

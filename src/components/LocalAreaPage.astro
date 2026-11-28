@@ -49,7 +49,6 @@ const schema = [
         </nav>
         <div class="local-area-hero-grid">
           <div>
-            <p class="eyebrow"><span class="status-dot"></span> DISEÑO WEB / REGIÓN METROPOLITANA</p>
             <h1>Diseño web en <span>{area.name}</span></h1>
             <p class="service-intro">{area.intro}</p>
             <div class="hero-actions">
@@ -68,7 +67,6 @@ const schema = [
 
       <section class="local-area-context section-pad">
         <div class="section-heading centered-heading">
-          <p class="eyebrow eyebrow-dark">CONTEXTO LOCAL</p>
           <h2>{area.contextTitle}</h2>
           <p class="section-intro">{area.context}</p>
         </div>
@@ -86,7 +84,6 @@ const schema = [
       <section class="local-services-section section-pad">
         <div class="section-heading heading-split">
           <div>
-            <p class="eyebrow eyebrow-dark">QUÉ PODEMOS CONSTRUIR</p>
             <h2>Una web adaptada a tu negocio en {area.name}</h2>
           </div>
           <p class="section-intro">El alcance se define antes de empezar. No necesitas contratar todo: priorizamos lo que ayuda a explicar tu oferta y facilitar el contacto.</p>
@@ -104,7 +101,6 @@ const schema = [
 
       <section class="service-process section-pad">
         <div class="section-heading">
-          <p class="eyebrow eyebrow-dark">CÓMO TRABAJAMOS</p>
           <h2>Un proceso claro para proyectos en {area.name}</h2>
         </div>
         <div class="process-grid">
@@ -117,7 +113,6 @@ const schema = [
 
       <section class="local-area-coverage section-pad">
         <div>
-          <p class="eyebrow eyebrow-dark">COBERTURA Y MODALIDAD</p>
           <h2>Trabajamos con empresas de {area.name} sin inventar una oficina local.</h2>
           <p>La coordinación principal es remota dentro de la Región Metropolitana. Si el proyecto requiere una instancia presencial, su viabilidad, lugar y condiciones se acuerdan antes de contratar. Para consultas de cercanía en Google Maps, la presencia depende de un Perfil de Empresa verificado y de la ubicación o zona de servicio real, no sólo de esta página.</p>
         </div>
@@ -126,7 +121,6 @@ const schema = [
 
       <section class="faq-section section-pad">
         <div class="section-heading">
-          <p class="eyebrow eyebrow-dark">PREGUNTAS DE EMPRESAS EN {area.name.toUpperCase()}</p>
           <h2>Antes de comenzar</h2>
         </div>
         <div class="faq-list">
@@ -142,7 +136,6 @@ const schema = [
       {nearbyAreas.length > 0 && (
         <section class="nearby-areas section-pad">
           <div class="section-heading">
-            <p class="eyebrow eyebrow-dark">OTRAS ZONAS DE ATENCIÓN</p>
             <h2>Proyectos en comunas cercanas</h2>
           </div>
           <div class="nearby-area-grid">
@@ -163,7 +156,6 @@ const schema = [
       )}
 
       <section class="contact-band section-pad">
-        <p class="eyebrow">¿TIENES UN PROYECTO EN {area.name.toUpperCase()}?</p>
         <h2>Hagamos una web<br />que explique y capture.</h2>
         <a class="button button-paper" href={`/contacto/?servicio=${encodeURIComponent(`Diseño web en ${area.name}`)}`}>Cuéntame tu proyecto <span aria-hidden="true">↗</span></a>
         <span class="contact-spark" aria-hidden="true">✳</span>

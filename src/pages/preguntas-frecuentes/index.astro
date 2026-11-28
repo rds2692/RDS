@@ -29,7 +29,6 @@ const schema = {
     <main id="contenido">
       <section class="directory-hero faq-page-hero section-pad">
         <nav class="breadcrumbs" aria-label="Migas de pan"><a href="/">Inicio</a><span aria-hidden="true">/</span><span aria-current="page">Preguntas frecuentes</span></nav>
-        <p class="eyebrow"><span class="status-dot"></span> ANTES DE CONTRATAR / RESPUESTAS CLARAS</p>
         <h1>Preguntas frecuentes sobre <span>diseño web y SEO.</span></h1>
         <p class="directory-intro">Qué incluye un proyecto, cómo se calcula el precio, cuándo conviene rediseñar, qué ocurre con el SEO y cómo se trabaja en Santiago. Respuestas concretas antes de pedir una propuesta.</p>
         <nav class="faq-jump-links" aria-label="Categorías de preguntas">
@@ -46,7 +45,6 @@ const schema = {
 
         <section class="faq-character-note" aria-labelledby="faq-character-title">
           <div>
-            <p class="eyebrow eyebrow-dark">LA PREGUNTA QUE ABRE EL PROYECTO</p>
             <h2 id="faq-character-title">La primera respuesta suele ser otra pregunta.</h2>
             <p>Qué necesita el negocio, a quién debe ayudar la web y cómo sabremos que funcionó. Antes de elegir un paquete, ordenamos esa conversación.</p>
             <a class="text-link" href="/servicios/">Comparar servicios <span aria-hidden="true">↗</span></a>
@@ -55,9 +53,9 @@ const schema = {
             compact
             src="/images/armando/expresion-03.webp"
             alt="Armando Rangel con una expresión de sorpresa"
-            label="¿Y ESTO?"
+
             caption="Un buen hallazgo puede cambiar la prioridad más obvia del brief."
-            index="03 / 07"
+
             tone="sand"
           />
         </section>
@@ -67,9 +65,7 @@ const schema = {
           return (
             <section class="faq-group" id={category.id} aria-labelledby={`faq-${category.id}-title`}>
               <div class="faq-group-heading">
-                <p class="eyebrow eyebrow-dark">{category.label.toUpperCase()}</p>
                 <h2 id={`faq-${category.id}-title`}>{category.label}</h2>
-                <span>{items.length.toString().padStart(2, '0')} PREGUNTAS</span>
               </div>
               <FaqAccordion items={items} />
             </section>
@@ -79,7 +75,6 @@ const schema = {
 
       <section class="faq-help section-pad">
         <div>
-          <p class="eyebrow eyebrow-dark">SIGUIENTE PASO</p>
           <h2>Tu proyecto no tiene que empezar con todas las respuestas.</h2>
           <p>Cuéntanos qué hace tu negocio, qué necesita cambiar y qué plazo tienes. Si todavía no sabes qué servicio elegir, lo definimos en la primera conversación.</p>
         </div>

@@ -2,9 +2,7 @@
 interface Props {
   src: string;
   alt: string;
-  label: string;
   caption: string;
-  index: string;
   tone?: 'sage' | 'blush' | 'peach' | 'sand';
   compact?: boolean;
 }
@@ -12,19 +10,13 @@ interface Props {
 const {
   src,
   alt,
-  label,
   caption,
-  index,
   tone = 'sage',
   compact = false,
 } = Astro.props;
 ---
 
 <figure class:list={['character-portrait', `character-${tone}`, { 'character-compact': compact }]}>
-  <div class="character-topline">
-    <span>RDS / RETRATO</span>
-    <span>{index}</span>
-  </div>
   <div class="character-stage">
     <span class="character-orbit" aria-hidden="true"></span>
     <span class="character-spark" aria-hidden="true">✳</span>
@@ -33,7 +25,6 @@ const {
     </div>
   </div>
   <figcaption>
-    <strong>{label}</strong>
     <p>{caption}</p>
   </figcaption>
 </figure>
@@ -68,20 +59,11 @@ const {
   .character-peach { background: var(--orange); }
   .character-sand { background: var(--sand); }
 
-  .character-topline {
-    display: flex;
-    justify-content: space-between;
-    gap: 1rem;
-    font-size: .54rem;
-    font-weight: 900;
-    letter-spacing: .1em;
-  }
-
   .character-stage {
     position: relative;
     display: grid;
     min-height: 385px;
-    margin: .8rem 0;
+    margin: .8rem 0 0;
     padding: 1.35rem .9rem;
     overflow: hidden;
     place-items: center;
@@ -146,23 +128,12 @@ const {
   }
 
   figcaption {
-    display: grid;
-    grid-template-columns: auto minmax(0, 1fr);
-    align-items: start;
-    gap: .8rem;
     padding-top: .7rem;
     border-top: 1px solid rgb(44 38 34 / 24%);
   }
 
-  figcaption strong {
-    color: var(--ink);
-    font-size: .58rem;
-    letter-spacing: .08em;
-    line-height: 1.4;
-  }
-
   figcaption p {
-    max-width: 320px;
+    max-width: 390px;
     margin: 0;
     font-size: .76rem;
     line-height: 1.42;
@@ -188,8 +159,7 @@ const {
   }
 
   .character-compact figcaption {
-    grid-template-columns: 1fr;
-    gap: .3rem;
+    margin-top: .55rem;
   }
 
   @media (max-width: 520px) {
@@ -199,11 +169,6 @@ const {
 
     .character-frame img {
       height: 310px;
-    }
-
-    figcaption {
-      grid-template-columns: 1fr;
-      gap: .35rem;
     }
 
     .character-compact .character-stage {

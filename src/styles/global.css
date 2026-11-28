@@ -3544,3 +3544,41 @@ a.process-card:hover,
 .local-checklist {
   background: var(--sand);
 }
+
+/* Remove decorative micro-labels and numeric eyebrow layers. */
+.hero-split-meta,
+.hero-split-kicker,
+.hero-split-number,
+.hero-split-note,
+.character-topline,
+.character-portrait figcaption strong,
+.discipline-index,
+.problem-number,
+.card-topline,
+.price-index,
+.art-topline,
+.art-footline,
+.art-scribble,
+.service-hero-caption,
+.method-step > span:first-child,
+.outcome-card > span:first-child,
+.process-card > span:first-child,
+.principles-grid article > span:first-child,
+.faq-group-heading > span,
+.blog-category-title > span,
+.blog-index-top > p,
+.project-teaser-art > span,
+.case-art > span,
+.related-link-grid a > span,
+.local-directory-grid a > span,
+.nearby-area-grid a > span {
+  display: none !important;
+}
+
+.blog-index-top {
+  justify-content: flex-end;
+}
+
+.method-step {
+  grid-template-columns: minmax(0, 1fr) 2.5rem;
+}
